@@ -1,3 +1,7 @@
+
+<?php
+	include 'login.php';
+?>
 <!DOCTYPE HTML>
 <!--
 	Minimaxing by HTML5 UP
@@ -8,10 +12,7 @@
 	<head>
 		<title>Minimaxing by HTML5 UP</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -21,13 +22,16 @@
 						<div class="12u">
 
 							<header id="header">
-								<h1><a href="#" id="logo">Minimaxing</a></h1>
+								<h1><img src = "truc.JPG" alt = "logo" width ="153" height ="86" /></h1>
+
 								<nav id="nav">
-									<a href="index.html" class="current-page-item">Homepage</a>
-									<a href="twocolumn1.html">Two Column #1</a>
-									<a href="twocolumn2.html">Two Column #2</a>
-									<a href="onecolumn.html">One Column</a>
-									<a href="threecolumn.html">Three Column</a>
+									<span id = "imgNom">Hugo</span>
+									<a href="index.php">Accueil</a>
+									<a href="mynetwork.php">Mon Reseau</a>
+									<a href="myprofile.php">Mon profil</a>
+									<a href="notifications.php" class="current-page-item">Notifications</a>
+									<a href="messages.php">Messagerie</a>
+									<a href="jobs.php">Emplois</a>
 								</nav>
 							</header>
 
@@ -40,7 +44,7 @@
 
 					<div id="banner">
 						<h2>Put something cool here!</h2>
-						<span>And put something almost as cool here, but a bit longer ...</span>
+						<span>And put something almost as cool here, but a bit longer1111 ...</span>
 					</div>
 
 				</div>
@@ -246,11 +250,6 @@
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/skel-viewport.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
 
 	</body>
 </html>
