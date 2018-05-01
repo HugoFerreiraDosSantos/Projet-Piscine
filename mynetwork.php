@@ -1,6 +1,5 @@
-
 <?php
-	include 'login.php';
+	include 'includes/login.php';
 ?>
 
 
@@ -24,16 +23,25 @@
 						<div class="12u">
 
 							<header id="header">
-								<h1><img src = "truc.JPG" alt = "logo" width ="153" height ="86" /></h1>
+								<h1><img src = "assets/css/images/<?php echo $_SESSION['photo_profile'];?>" alt = "logo" width ="86" height ="86" style = "border-radius : 40px; border : black solid;"/></h1>
 
 								<nav id="nav">
-									<span id = "imgNom">Hugo</span>
+									<span id = "imgNom"><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom']; ?></span>
 									<a href="index.php">Accueil</a>
-									<a href="mynetwork.php" class="current-page-item">Mon Reseau</a>
-									<a href="myprofile.php">Mon profil</a>
-									<a href="notifications.php">Notifications</a>
-									<a href="messages.php">Messagerie</a>
+									<a href="mynetwork.php" class="current-page-item">Réseau</a>
+									<a href="myprofile.php">Profil&nbsp;</a>
+									<a href="notifications.php">Notifs&nbsp;</a>
+									<a href="messages.php">Messages</a>
 									<a href="jobs.php">Emplois</a>
+								    <a href="album.php">Album&nbsp;</a>
+									<?php if($_SESSION['admin']=="Admin"){
+										echo '<a href="admin.php">Admin</a>';
+										echo '<style type="text/css">
+										        #imgNom {
+										            left: -290px;
+										        }
+										  		</style>';
+									} ?>
 								</nav>
 							</header>
 

@@ -2,7 +2,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['pseudo']) || !isset($_SESSION['email'])) {
+if(!isset($_SESSION['id_user'])) {
     if(!isset($_POST['pseudo']) || !isset($_POST['email'])) {
         ?>
         <!DOCTYPE html>
@@ -11,7 +11,6 @@ if(!isset($_SESSION['pseudo']) || !isset($_SESSION['email'])) {
         <head>
             <title>Social Media Professionel</title>
             <meta charset = "utf-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="stylesheet" href="assets/css/main.css" />
         </head>
         <!-- section du corps (body) -->
@@ -19,17 +18,21 @@ if(!isset($_SESSION['pseudo']) || !isset($_SESSION['email'])) {
             <div id="page-wrapper">
                 <div id="banner-wrapper">
                     <div class="container">
-                        <div id="banner">
+                        <div id="connexion">
                             <h2>Connexion</h2><br />
                             <span>
                                 <form method="POST" action="<?=$_SERVER['PHP_SELF']?>">
-                              	<label>Pseudo :</label>
-                              	<input type = "text" name = "pseudo"/><br />
-                              	<label>&nbsp;&nbsp;&nbsp;Email :</label>
-                              	<input type = "mail" name = "email"/><br />
-                              	<input type = "submit" value = "Connexion" name = "bouton"/>
+                                <table>
+                                  	<tr><td><label>Pseudo :</label></td>
+                                  	<td><input type = "text" name = "pseudo"/></td></tr>
+                                  	<tr><td><label>Email :</label></td>
+                                  	<td><input type = "mail" name = "email"/></td></tr>
+                                </table>
+                              	<input type = "submit" value = "Connexion" name = "connexion"/>
+
                                 </form>
                             </span>
+                            <a href="sign-up.php">Inscription</a>
                         </div>
                     </div>
                 </div>
@@ -46,17 +49,18 @@ if(!isset($_SESSION['pseudo']) || !isset($_SESSION['email'])) {
           $ok = false;
           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-          $sql = "SELECT * FROM `login` WHERE `pseudo` = '".$_POST['pseudo']."' AND `email` = '".$_POST['email']."';";
+          $sql = "SELECT L.id_user,`admin`,U.nom,`prenom`,`path` FROM login L, user U, media M WHERE `pseudo` = '" . $_POST['pseudo'] . "' AND `email` = '" . $_POST['email'] . "' AND L.id_user = U.id_user AND U.photo_profile = M.id_media;";
+          $resultats = $conn->query($sql);
+          $resultat = $resultats->fetch(PDO::FETCH_OBJ);
 
-          foreach ($conn->query($sql) as $row) {
-              $ok = true;
-          }
-
-          if (!$ok) {
+          if (!$resultat) {
               header("location:". $_SERVER['PHP_SELF']);
           } else {
-              $_SESSION['pseudo'] = $_POST['pseudo'];
-              $_SESSION['email'] = $_POST['email'];
+              $_SESSION['id_user'] = $resultat->id_user;
+              $_SESSION['admin'] = $resultat->admin;
+              $_SESSION['nom'] = $resultat->nom;
+              $_SESSION['prenom'] = $resultat->prenom;
+              $_SESSION['photo_profile'] = $resultat->path;
           }
           $conn = null;
         }
