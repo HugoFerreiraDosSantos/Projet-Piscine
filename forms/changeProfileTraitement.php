@@ -1,8 +1,8 @@
 <?php
 
-include 'includes/login.php';
+include '../includes/login.php';
 
-try 
+try
 {
 $extensions_valides = array('jpg', 'jpeg','png','JPG');
 	if (!in_array(substr(strrchr($_FILES['photo']['name'],'.'),1),$extensions_valides))
@@ -12,8 +12,8 @@ $extensions_valides = array('jpg', 'jpeg','png','JPG');
 	}
 $conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	
-	
+
+
 	$sql = "SELECT (MAX(id_media)+1) AS id FROM `media`";
         $resultats = $conn->query($sql);
 	$resultat = $resultats->fetch(PDO::FETCH_OBJ);
@@ -21,7 +21,7 @@ $conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
 
         $nom = $id.strrchr($_FILES['photo']['name'],'.');
 
-	$resultat = move_uploaded_file($_FILES['photo']['tmp_name'],"assets/css/images/".$nom);
+	$resultat = move_uploaded_file($_FILES['photo']['tmp_name'],"../assets/css/images/".$nom);
 	$sql = "INSERT INTO `media` VALUES(".$id.",'".$nom."','".$_FILES['photo']['name']."')";
         $stmt = $conn->prepare($sql);
 	$stmt->execute();
@@ -30,7 +30,7 @@ $conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
 	$stmt = $conn->prepare($sql);
 	$stmt->execute(array($id));
 	$_SESSION['photo_profile']= $nom;
-	header('Location: myprofile.php');
+	header('Location: ../myprofile.php');
         }
 catch(PDOException $ex)
 {

@@ -1,3 +1,12 @@
+<?php
+
+include 'includes/login.php';
+
+if($_SESSION['admin']=='User'){
+    header('Location: index.php');
+} else {
+?>
+
 <!DOCTYPE html>
 <html>
 <!-- section principale avec titre -->
@@ -9,6 +18,38 @@
 <!-- section du corps (body) -->
 <body>
     <div id="page-wrapper">
+        <div id="header-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="12u">
+
+                        <header id="header">
+                            <h1><img src = "assets/css/images/<?php echo $_SESSION['photo_profile'];?>" alt = "logo" width ="86" height ="86" style = "border-radius : 40px; border : black solid;"/></h1>
+
+                            <nav id="nav">
+                                <span id = "imgNom"><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom']; ?></span>
+                                <a href="index.php">Accueil</a>
+                                <a href="mynetwork.php">Réseau</a>
+                                <a href="myprofile.php">Profil&nbsp;</a>
+                                <a href="notifications.php">Notifs&nbsp;</a>
+                                <a href="messages.php">Messages</a>
+                                <a href="jobs.php">Emplois</a>
+                                <a href="album.php">Album&nbsp;</a>
+                                <?php if($_SESSION['admin']=="Admin"){
+                                    echo '<a href="admin.php" class="current-page-item">Admin</a>';
+                                    echo '<style type="text/css">
+                                            #imgNom {
+                                                left: -290px;
+                                            }
+                                            </style>';
+                                } ?>
+                            </nav>
+                        </header>
+
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="banner-wrapper">
             <div class="container">
                 <div id="admin">
@@ -44,9 +85,23 @@
                     <form method="POST" action="<?=$_SERVER['PHP_SELF']?>">
                     <table>
                         <tr><td><label>Utilisateur :</label></td>
-                        <td><select name = "admin">
-                            <!--<option value="User" selected>User</option>
-                            <option value="Admin">Admin</option>-->
+                        <td><select name = "suppression">
+                            <?php
+                            try {
+                                $conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
+                                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                                $sql = "SELECT L.id_user, `prenom`, `nom`, `pseudo`, `email` FROM login L, user U WHERE L.id_user = U.id_user;";
+                                $resultats = $conn->query($sql);
+                                while($resultat = $resultats->fetch(PDO::FETCH_OBJ)){
+                                    if($resultat->id_user != $_SESSION['id_user']) echo "<option value=".$resultat->id_user.">".$resultat->prenom." ".$resultat->nom." (".$resultat->pseudo." | ".$resultat->email.")</option>";
+                                }
+
+                                $conn = null;
+                            } catch(PDOException $err) {
+                                echo "ERROR: Unable to connect: " . $err->getMessage();
+                            }
+                            ?>
                         </select></td></tr>
                     </table>
                     <input type = "submit" value = "Supprimer" name = "supprimer"/>
@@ -60,44 +115,71 @@
 </html>
 
 <?php
+}
 
-if(isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['admin']) && isset($_POST['nom']) && isset($_POST['prenom'])) {
+if(isset($_POST['inscrire'])){
+    if(isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['admin']) && isset($_POST['nom']) && isset($_POST['prenom'])) {
 
-    try {
-        $conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try {
+            $conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "INSERT INTO `login` (`pseudo`,`email`,`admin`) VALUES ('" . $_POST['pseudo'] . "','" . $_POST['email'] . "','" . $_POST['admin'] . "');";
+            $sql = "INSERT INTO `login` (`pseudo`,`email`,`admin`) VALUES ('" . $_POST['pseudo'] . "','" . $_POST['email'] . "','" . $_POST['admin'] . "');";
 
-        $count = $conn->exec($sql);
+            $count = $conn->exec($sql);
 
-        if ($count != 0)
-        {
-            $sql2 = "SELECT `id_user` FROM `login` WHERE `pseudo` = '" . $_POST['pseudo'] . "' AND `email` = '" . $_POST['email'] . "';";
-            $resultats = $conn->query($sql2);
+            if ($count != 0)
+            {
+                $sql2 = "SELECT `id_user` FROM `login` WHERE `pseudo` = '" . $_POST['pseudo'] . "' AND `email` = '" . $_POST['email'] . "';";
+                $resultats = $conn->query($sql2);
 
-            $resultat = $resultats->fetch(PDO::FETCH_OBJ);
-            $id = $resultat->id_user;
-            echo $id;
+                $resultat = $resultats->fetch(PDO::FETCH_OBJ);
+                $id = $resultat->id_user;
 
-            if($id > 0){
+                if($id > 0){
 
-                $sql3 = "INSERT INTO `user` (`id_user`,`nom`,`prenom`) VALUES ('" . $id . "','" . $_POST['nom'] . "','" . $_POST['prenom'] . "');";
+                    $sql3 = "INSERT INTO `user` (`id_user`,`nom`,`prenom`) VALUES ('" . $id . "','" . $_POST['nom'] . "','" . $_POST['prenom'] . "');";
 
-                $count3 = $conn->exec($sql3);
+                    $count3 = $conn->exec($sql3);
 
-                if ($count3 != 0) {
-                    echo "User ajouté";
-                } else {
-                    echo "Erreur";
+                    if ($count3 != 0) {
+                        echo "User ajouté";
+                    } else {
+                        echo "Erreur ajout";
+                    }
                 }
             }
+
+            $conn = null;
+
+            header('Location: admin.php');
+        } catch(PDOException $err) {
+            echo "ERROR: Unable to connect: " . $err->getMessage();
         }
 
-        $conn = null;
-    } catch(PDOException $err) {
-        echo "ERROR: Unable to connect: " . $err->getMessage();
     }
+} else {
+    if(isset($_POST['suppression'])){
+        try {
+            $conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+            $sql = "DELETE FROM `login` WHERE `id_user` = " . $_POST['suppression'] . ";";
+
+            $count = $conn->exec($sql);
+
+            if ($count3 != 0) {
+                echo "User supprimé";
+            } else {
+                echo "Erreur suppression";
+            }
+
+            $conn = null;
+
+            header('Location: admin.php');
+        } catch(PDOException $err) {
+            echo "ERROR: Unable to connect: " . $err->getMessage();
+        }
+    }
 }
 ?>

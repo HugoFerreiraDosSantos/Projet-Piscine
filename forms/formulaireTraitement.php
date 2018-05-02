@@ -1,6 +1,6 @@
 <?php
 
-include 'includes/login.php';
+include '../includes/login.php';
 
 $sql = "UPDATE `user` SET statut = ? ,  prenom = ? , nom = ? , date_naissance = ? , ville = ? , formation = ? , experience = ? , competence = ? WHERE id_user = ".$_SESSION['id_user']." ;";
 try {
@@ -14,8 +14,8 @@ try {
         catch(PDOException $err) {
           echo "ERROR: Unable to connect: " . $err->getMessage();
         }
-$_SESSION ['prenom'] = $_POST['prenom']; 
+$_SESSION ['prenom'] = $_POST['prenom'];
 $_SESSION ['nom'] = $_POST['nom'];
-header('Location: myprofile.php');
+header('Location: ../myprofile.php');
 exit;
 ?>

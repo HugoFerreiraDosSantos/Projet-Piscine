@@ -11,7 +11,7 @@ if(!isset($_SESSION['id_user'])) {
         <head>
             <title>Social Media Professionel</title>
             <meta charset = "utf-8" />
-            <link rel="stylesheet" href="assets/css/main.css" />
+            <link rel="stylesheet" href="http://teezer.org/piscine/assets/css/main.css" />
         </head>
         <!-- section du corps (body) -->
         <body>
@@ -32,7 +32,7 @@ if(!isset($_SESSION['id_user'])) {
 
                                 </form>
                             </span>
-                            <a href="sign-up.php">Inscription</a>
+                            <a href="http://teezer.org/piscine/forms/sign-up.php">Inscription</a>
                         </div>
                     </div>
                 </div>

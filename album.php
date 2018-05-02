@@ -14,20 +14,19 @@
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
-		
+
 		#main section
 		{
-		 border : black solid;
+		 	border : black solid;
 		}
 		#main section h2
 		{
 
-		text-align : center;
+			text-align : center;
 		}
-
 		</style>
 	</head>
-	
+
 	<body>
 		<div id="page-wrapper">
 			<div id="header-wrapper">
@@ -64,23 +63,24 @@
 			</div>
 			<div id="main">
 				<div class="container">
-				<h1 style = "text-align : center;"><a href="newAlbum.php" class="button">Créer un nouvel album</a></h1></br></br>
+				<h1 style = "text-align : center;"><a href="forms/newAlbum.php" class="button">Créer un nouvel album</a>   <a href="forms/suppAlbum.php" class="button" style = "margin-left : 20px;">Supprimer un album</a></h1></br></br>
 					<div class="row main-row">
 					<?php
-					$sql = "SELECT id_album, nom FROM `album` WHERE id_user = ".$_SESSION['id_user'].";"; 	
+					$sql = "SELECT id_album, nom FROM `album` WHERE id_user = ".$_SESSION['id_user'].";";
 					try{
 					$conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
         				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 					$resultats = $conn->query($sql);
          				while($resultat = $resultats->fetch(PDO::FETCH_OBJ))
 					{
-					echo '<div class="4u 12u(mobile)">';
-					echo '<section></br><h2>';
-					echo $resultat->nom.'</h2><h2><a href="http://html5up.net" class="button">Voir les photos';
-					echo '</a></h2></section></div>';
+						echo '<div class="4u 12u(mobile)">';
+						echo '<section></br><h2>';
+						echo $resultat->nom.'<a href = "forms/modifAlbum.php?id='.$resultat->id_album.'" style = "margin-left: 10px;"><img src ="assets/css/images/modif.png" alt = "modif" width ="30" height ="30"/></a></h2>';
+						echo '<h2><a href="photos.php?id='.$resultat->id_album.'" class="button"  >Voir les photos</a></h2>';
+						echo '</section></div>';
 					}
 					} catch(PDOException $ex) { echo $ex->getMessage(); }
-					?>    
+					?>
 
 					</div>
 			</div>

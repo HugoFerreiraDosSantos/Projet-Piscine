@@ -8,7 +8,7 @@ if(!isset($_POST['pseudo']) || !isset($_POST['email']) || !isset($_POST['nom']) 
 <head>
     <title>Social Media Professionel</title>
     <meta charset = "utf-8" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
 </head>
 <!-- section du corps (body) -->
 <body>

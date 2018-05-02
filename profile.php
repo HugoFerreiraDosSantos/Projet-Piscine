@@ -1,6 +1,6 @@
 <?php
 	include 'includes/login.php';
-	include 'includes/userInfo.php';
+	include 'includes/userInfo2.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -18,7 +18,7 @@
 		.roundedImage{
 			position : absolute;
     		border-radius: 100px;
-            background : #fff url(assets/css/images/<?php echo $_SESSION["photo_profile"]; ?>) no-repeat;
+            background : #fff url(assets/css/images/<?php echo $info2[9]; ?>) no-repeat;
 			width : 200px;
 			height : 200px;
 			background-size : 200px 200px;
@@ -32,7 +32,7 @@
 			.roundedImage{
 				position : absolute;
 	    		border-radius: 100px;
-	            background : #fff url(assets/css/images/<?php echo $_SESSION["photo_profile"]; ?>) no-repeat;
+	            background : #fff url(assets/css/images/<?php echo $info2[9]; ?>) no-repeat;
 				width : 200px;
 				height : 200px;
 				background-size : 200px 200px;
@@ -51,7 +51,7 @@
 
 				width: 1200px;
 				height: 300px;
-				background: #fff url(assets/css/images/<?php echo $info[6]; ?>) no-repeat;
+				background: #fff url(assets/css/images/<?php echo $info2[6]; ?>) no-repeat;
 				background-size: 1200px 300px;
 			border: solid;
 			border-color : black;
@@ -73,8 +73,8 @@
 								<nav id="nav">
 									<span id = "imgNom"><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom']; ?></span>
 									<a href="index.php">Accueil</a>
-									<a href="mynetwork.php">Réseau</a>
-									<a href="myprofile.php" class="current-page-item">Profil&nbsp;</a>
+									<a href="mynetwork.php" class="current-page-item">Réseau</a>
+									<a href="myprofile.php">Profil&nbsp;</a>
 									<a href="notifications.php">Notifs&nbsp;</a>
 									<a href="messages.php">Messages</a>
 									<a href="jobs.php">Emplois</a>
@@ -97,15 +97,16 @@
 			<div id="banner-wrapper">
 				<div class="container">
 
-					<a href = "forms/changeBack.php" alt = "back"><div id="banner_img">
-					</div></a>
-					<a href = "forms/changeProfile.php" alt = "profilPic"><div class="roundedImage">
-					</div></a>
+					<div id="banner_img">
+					</div>
+					<div class="roundedImage">
+					</div>
 
 				</div>
 			</div>
 			<div id="main">
 				<div class="container">
+
 					<div class="row main-row">
 						<div class="4u 12u(mobile)">
 
@@ -113,19 +114,19 @@
 								<h2>Informations</h2>
 								<ul class="small-image-list">
 								<li>
-								Statut  :  <?php echo $info[0] ;?>
+								Statut  :  <?php echo $info2[0] ;?>
 								</li>
 								<li>
-								Prenom  :  <?php echo $_SESSION["prenom"] ;?>
+								Prenom  :  <?php echo $info2[7] ;?>
 								</li>
 								<li>
-								Nom  :  <?php echo $_SESSION["nom"] ;?>
+								Nom  :  <?php echo $info2[8] ;?>
 								</li>
 								<li>
-								Date de naissance  :  <?php echo $info[1] ;?>
+								Date de naissance  :  <?php echo $info2[1] ;?>
 								</li>
 								<li>
-								Ville  :  <?php echo $info[2] ;?>
+								Ville  :  <?php echo $info2[2] ;?>
 								</li>
 								</ul>
 							</section>
@@ -136,7 +137,7 @@
 							<section class = "Autre">
 								</br>
 								<h2>Formation</h2>
-								<?php echo $info[3] ;?>
+								<?php echo $info2[3] ;?>
 
 							</section>
 
@@ -148,9 +149,25 @@
 					<div class="row main-row">
 						<div class="4u 12u(mobile)">
 
+							<?php
+							try {
+								$conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
+								$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-							<a href="forms/formulaireProfil.php"><img src = "assets/css/images/modif.png" alt = "modif" width ="100" height ="100" style = "margin-left : 80px;"/></a>
+								$sql = "SELECT * FROM `relation` WHERE `id_user` = ".$_SESSION['id_user']." AND `id_friend` = ".$info2[10].";";
+								$resultats = $conn->query($sql);
+				                $resultat = $resultats->fetch(PDO::FETCH_OBJ);
 
+								if(!$resultat){
+									echo '<a style="margin-left:20px;" href="forms/addRelation.php?id_friend='.$info2[10].'" class="button">Ajouter une relation</a>';
+								}
+
+								$conn = null;
+
+							} catch(PDOException $err) {
+								echo "ERROR: Unable to connect: " . $err->getMessage();
+							}
+							?>
 
 						</div>
 						<div class="4u 12u(mobile)">
@@ -158,7 +175,7 @@
 							<section class = "Autre">
 								</br>
 								<h2>Expériences</h2>
-								<?php echo $info[4] ;?>
+								<?php echo $info2[4] ;?>
 								</section>
 
 						</div>
@@ -170,14 +187,13 @@
 						<div class="4u 12u(mobile)">
 
 
-
 						</div>
 						<div class="4u 12u(mobile)">
 
 							<section class = "Autre">
 								</br>
 								<h2>Compétences</h2>
-								<?php echo $info[5] ;?>
+								<?php echo $info2[5] ;?>
 								</section>
 
 						</div>

@@ -1,7 +1,7 @@
 
 <?php
-	include 'includes/login.php';
-	include 'includes/userInfo.php';
+	include '../includes/login.php';
+	include '../includes/userInfo.php';
 ?>
 
 <!-- en-têtes de fichier html -->

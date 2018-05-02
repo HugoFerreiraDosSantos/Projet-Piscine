@@ -13,6 +13,16 @@
 		left: -380px;
 	}
 
+	#main section
+	{
+		border : black solid;
+	}
+	#main section h2
+	{
+
+		text-align : center;
+	}
+
 	#connexion {
 		-moz-box-sizing: content-box;
 		-webkit-box-sizing: content-box;
@@ -166,6 +176,82 @@
 		}
 
 
+	#ajoutAnnonce {
+		-moz-box-sizing: content-box;
+		-webkit-box-sizing: content-box;
+		-ms-box-sizing: content-box;
+		box-sizing: content-box;
+		position: relative;
+		width: 1160px;
+		height: 265px;
+		box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+		border-radius: 10px;
+		padding: 20px;
+		background: #fff url(images/banner.jpg) repeat 20px 20px;
+		background-size: 1160px 265px;
+	}
+
+
+		#ajoutAnnonce h2 {
+			position: absolute;
+			z-index: 1;
+			width: 100%;
+			top: 50px;
+			left: 0;
+			font-size: 3.3em;
+			color: #fff;
+			text-align: center;
+			letter-spacing: -2px;
+		}
+
+		#ajoutAnnonce span {
+			display: block;
+			position: absolute;
+			z-index: 1;
+			width: 100%;
+			bottom: 60px;
+			left: 0;
+			font-size: 1.6em;
+			color: #fff;
+			text-align: center;
+			letter-spacing: -1px;
+			opacity: 0.8;
+		}
+
+		#ajoutAnnonce table {
+			display: block;
+			position: absolute;
+			z-index: 1;
+			width: 100%;
+			margin-left: 39%;
+			bottom: 40px;
+			left: 0;
+			font-size: 1.2em;
+			color: #fff;
+			text-align: center;
+			opacity: 0.8;
+		}
+
+		#ajoutAnnonce td {
+			padding: 0px 5px 0px 5px;
+			text-align: right;
+			vertical-align: bottom;
+		}
+
+		#ajoutAnnonce a {
+			display: block;
+			position: absolute;
+			z-index: 1;
+			margin-left: 85%;
+			bottom: 40px;
+			left: 0;
+			font-size: 1.4em;
+			color: #fff;
+			text-align: center;
+			opacity: 0.8;
+		}
+
+
 	#inscription {
 		-moz-box-sizing: content-box;
 		-webkit-box-sizing: content-box;
@@ -288,7 +374,7 @@
 				position: absolute;
 				z-index: 1;
 				width: 100%;
-				margin-left: 39%;
+				padding-left: 39%;
 				bottom: 40px;
 				left: 0;
 				font-size: 1.2em;
@@ -363,7 +449,7 @@
 					position: absolute;
 					z-index: 1;
 					width: 100%;
-					margin-left: 39%;
+					padding-left: 31%;
 					bottom: 40px;
 					left: 0;
 					font-size: 1.2em;
@@ -390,6 +476,81 @@
 					text-align: center;
 					opacity: 0.8;
 				}
+
+				#recherche {
+					-moz-box-sizing: content-box;
+					-webkit-box-sizing: content-box;
+					-ms-box-sizing: content-box;
+					box-sizing: content-box;
+					position: relative;
+					width: 1160px;
+					height: 300px;
+					box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+					border-radius: 10px;
+					padding: 20px;
+					background: #fff url(images/banner.jpg) repeat 20px 20px;
+					background-size: 1160px 300px;
+				}
+
+
+					#recherche h2 {
+						position: absolute;
+						z-index: 1;
+						width: 100%;
+						top: 50px;
+						left: 0;
+						font-size: 3.3em;
+						color: #fff;
+						text-align: center;
+						letter-spacing: -2px;
+					}
+
+					#recherche span {
+						display: block;
+						position: absolute;
+						z-index: 1;
+						width: 100%;
+						bottom: 60px;
+						left: 0;
+						font-size: 1.6em;
+						color: #fff;
+						text-align: center;
+						letter-spacing: -1px;
+						opacity: 0.8;
+					}
+
+					#recherche table {
+						display: block;
+						position: absolute;
+						z-index: 1;
+						width: 100%;
+						padding-left: 38%;
+						bottom: 40px;
+						left: 0;
+						font-size: 1.2em;
+						color: #fff;
+						text-align: center;
+						opacity: 0.8;
+					}
+
+					#recherche td {
+						padding: 0px 5px 0px 5px;
+						text-align: right;
+						vertical-align: bottom;
+					}
+
+					#recherche a {
+						display: block;
+						position: absolute;
+						z-index: 1;
+						margin-left: 85%;
+						bottom: 40px;
+						left: 0;
+						font-size: 1.4em;
+						color: #fff;
+						text-align: center;
+						opacity: 0.8;
+					}
 
 
 /* Reset */
@@ -1338,7 +1499,8 @@
 
 			#main .Autre
 			{
-			width : 790px;
+			margin: auto;
+			max-width : 790px;
 			padding-left : 20px;
 			border : solid;
 			border-color : black;
