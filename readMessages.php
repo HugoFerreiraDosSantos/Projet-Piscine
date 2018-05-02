@@ -13,20 +13,7 @@
 		<title>Minimaxing by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<style>
-
-		#main section
-		{
-		 	border : black solid;
-		}
-		#main section h2
-		{
-
-			text-align : center;
-		}
-		</style>
 	</head>
-
 	<body>
 		<div id="page-wrapper">
 			<div id="header-wrapper">
@@ -43,9 +30,9 @@
 									<a href="mynetwork.php">Réseau</a>
 									<a href="myprofile.php">Profil&nbsp;</a>
 									<a href="notifications.php">Notifs&nbsp;</a>
-									<a href="messages.php">Messages</a>
+									<a href="messages.php"  class="current-page-item">Messages</a>
 									<a href="jobs.php">Emplois</a>
-									<a href="album.php" class="current-page-item">Album&nbsp;</a>
+								    <a href="album.php">Album&nbsp;</a>
 									<?php if($_SESSION['admin']=="Admin"){
 										echo '<a href="admin.php">Admin</a>';
 										echo '<style type="text/css">
@@ -61,30 +48,38 @@
 					</div>
 				</div>
 			</div>
-			<div id="main">
-				<div class="container">
-				<h1 style = "text-align : center;"><a href="forms/newAlbum.php" class="button">Créer un nouvel album</a>   <a href="forms/suppAlbum.php" class="button" style = "margin-left : 20px;">Supprimer un album</a></h1></br></br>
-					<div class="row main-row">
-					<?php
-					$sql = "SELECT id_album, nom FROM `album` WHERE id_user = ".$_SESSION['id_user'].";";
-					try{
+			<div id="main" >
+				<div class="container" style ="width: 600px; height: 450px; border: black solid; background-color: lightgray;">
+				
+				<div style ="margin: 10px 10px 10px 10px; overflow: auto; word-wrap: break-word;">
+				<?php 
+				$sql="SELECT id_user1,contenu,date FROM `messagerie` WHERE";
+				$sql=$sql." id_user1=".$_GET['id']." OR id_user2=".$_GET['id'].";";
+				try{
 					$conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
-        				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	        			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 					$resultats = $conn->query($sql);
-         				while($resultat = $resultats->fetch(PDO::FETCH_OBJ))
+	         			while($resultat = $resultats->fetch(PDO::FETCH_OBJ))
 					{
-						echo '<div class="4u 12u(mobile)">';
-						echo '<section></br><h2>';
-						echo $resultat->nom.'<a href = "forms/modifAlbum.php?id='.$resultat->id_album.'" style = "margin-left: 10px;"><img src ="assets/css/images/modif.png" alt = "modif" width ="30" height ="30"/></a>';
-						echo '<a href = "forms/addPhotoAlbum.php?id='.$resultat->id_album.'" style = "margin-left: 10px;"><img src ="assets/css/images/upload.png" alt = "upload" width ="30" height ="30"/></a> </h2>';
-						echo '<h2><a href="photos.php?id='.$resultat->id_album.'" class="button"  >Voir les photos</a></h2>';
-						echo '</section></div>';
+					
+					if($_SESSION['id_user']!=$resultat->id_user1){
+						echo '<span><img src="assets/css/images/'.$_SESSION['photo_profile'].'" alt ="pp" style="width: 60px; height: 60px; border-radius: 30px; border: black solid;"/>';
+						echo '<img src="assets/css/images/recu.png" alt ="bulleRecu" style="width: 200px; height: 100px; margin-left: 10px;"/></span>';
 					}
-					} catch(PDOException $ex) { echo $ex->getMessage(); }
-					?>
-
-					</div>
+					if($_SESSION['id_user']==$resultat->id_user1){
+						echo '<span style="text-align: right;"><img src="assets/css/images/envoie.png" alt ="bulleEnvoie" style="width: 200px; height: 100px; margin-right: 10px;"/>';
+						echo '<img src="assets/css/images/'.$_GET['img2'].'" alt ="pp" style="width: 60px; height: 60px; border-radius: 30px; border: black solid;"/></span>';
+					}
+					
+					echo '</br></br>';		
+					}
+			}catch (PDOException $ex){ echo $ex->getMessage();}
+				?>
+				</div>
+				
+				</div>
 			</div>
+		</div>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

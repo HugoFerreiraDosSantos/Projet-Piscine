@@ -51,9 +51,9 @@
 			</div>
 			<div id="main" >
 				<?php 
-				$sql = "SELECT nom,prenom FROM (SELECT id_user1,id_user2 FROM messagerie WHERE id_user1 = ".$_SESSION['id_user'];
+				$sql = "SELECT path ,id_user2,U.nom,prenom FROM (SELECT id_user1,id_user2 FROM messagerie WHERE id_user1 = ".$_SESSION['id_user'];
 				$sql = $sql." UNION SELECT id_user2,id_user1 FROM messagerie WHERE id_user2 = ".$_SESSION['id_user'].") AS Mix , ";
-				$sql = $sql." user U WHERE U.id_user = id_user2";
+				$sql = $sql." user U , media M WHERE U.id_user = id_user2 AND U.photo_profile = M.id_media";
 				try{
 					$conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
 	        			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -61,8 +61,8 @@
 	         			while($resultat = $resultats->fetch(PDO::FETCH_OBJ))
 					{echo '<div class="container" style ="width: 500px;">';
 					echo '<section>';
-					echo '</br><h2>'.$resultat->prenom.' '.$resultat->nom.'</h2>';
-				echo '<h2><a href="" class="button" style = "text-align: center;">Messages</a></h2></section></div></br></br>';
+					echo '</br><h2><img src ="assets/css/images/'.$resultat->path.'" alt = "pp" style = "width: 60px; height: 60px; border-radius: 30px; border: black solid;" /> '.$resultat->prenom.' '.$resultat->nom.'</h2>';
+				echo '<h2><a href="readMessages.php?id='.$resultat->id_user2.'&img2='.$resultat->path.'" class="button" style = "text-align: center;">Messages</a></h2></section></div></br></br>';
 				}
 			}catch (PDOException $ex){ echo $ex->getMessage();}
 				?>

@@ -86,7 +86,7 @@
 						
 							while($resultat = $resultats->fetch(PDO::FETCH_OBJ))
 						{
-						echo '<li><a href = "forms/nomPhoto.php?name='.$resultat->nom.'&album='.$_GET['id'].'" ><img src="assets/css/images/'.$resultat->path.'" width="100" height="50" class="img'.$i.'"/></li></a>';
+						echo '<li><a href = "forms/nomPhoto.php?name='.$resultat->nom.'&album='.$_GET['id'].'" ><img src="assets/css/images/'.$resultat->path.'" width="100" height="50" class="img'.$i.'" TITLE ="'.$resultat->nom.'"/></li></a>';
 						$i++;
 						}
 						} catch(PDOException $ex) {  }
@@ -104,7 +104,7 @@
 	<div class ="container">
 		<div class="row main-row">
 		<div class="4u 12u(mobile)">
-		<section></section>
+		
 		</div>
 		<div class="4u 12u(mobile)">
 

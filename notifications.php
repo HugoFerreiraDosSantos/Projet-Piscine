@@ -1,6 +1,7 @@
 <?php
 	include 'includes/login.php';
 ?>
+
 <!DOCTYPE HTML>
 <!--
 	Minimaxing by HTML5 UP
@@ -12,6 +13,25 @@
 		<title>Minimaxing by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script>
+			function acceptRel(){
+				var x= <?php
+					try{
+						$sql = "INSERT INTO `relation` VALUES (".$_SESSION['id_user'].",".$resultat->id_source.")";
+
+						$conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
+						$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+						$conn->exec($sql);
+
+						$sql2 = "INSERT INTO `relation` VALUES (".$resultat->id_source.",".$_SESSION['id_user'].")";
+						$conn->exec($sql2);
+
+						$conn = null;
+					} catch(PDOException $ex) { echo $ex->getMessage(); } ?>;
+				return false;
+			}
+		</script>
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -47,211 +67,30 @@
 					</div>
 				</div>
 			</div>
-			<div id="banner-wrapper">
-				<div class="container">
-
-					<div id="banner">
-						<h2>Put something cool here!</h2>
-						<span>And put something almost as cool here, but a bit longer1111 ...</span>
-					</div>
-
-				</div>
-			</div>
 			<div id="main">
 				<div class="container">
-					<div class="row main-row">
-						<div class="4u 12u(mobile)">
 
-							<section>
-								<h2>Welcome to Minimaxing!</h2>
-								<p>This is <strong>Minimaxing</strong>, a fully responsive HTML5 site template designed by <a href="http://twitter.com/ajlkn">AJ</a> and released for free by <a href="http://html5up.net">HTML5 UP</a>. It features
-								a simple, lightweight design, solid HTML5 and CSS3 code, and full responsive support for desktop, tablet, and mobile displays.</p>
-								<footer class="controls">
-									<a href="http://html5up.net" class="button">More cool designs ...</a>
-								</footer>
-							</section>
+					<?php
+					$sql = "SELECT type, id_source, nom, prenom FROM notification N , user U WHERE N.id_user = ".$_SESSION['id_user']." AND N.id_source = U.id_user;";
+					try{
+						$conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
+	        			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+						$resultats = $conn->query($sql);
+	         			while($resultat = $resultats->fetch(PDO::FETCH_OBJ))
+						{
+							echo '<section style = "position: relative; height: 200px;" ></br>';
+							if($resultat->type = "Invitation"){
+								echo '<h2>Invitation</h2></br>';
+							}
+							echo '<div style="text-align:center; color: black; overflow: auto; word-wrap: break-word;"><h3>'.$resultat->prenom.' '.$resultat->nom.' vous avez envoyé une invitation pour faire parti de vos relations.';
+							echo '<a href="forms/acceptRelation.php?id_friend='.$resultat->id_source.'&accept=1" class="button" style="margin-left: 50px;">Accepter</a><a href="forms/acceptRelation.php?id_friend='.$resultat->id_source.'&accept=0" class="button" style="margin-left: 50px;">Refuser</a>';
+							echo '</h3></div></section>';
+						}
 
-						</div>
-						<div class="4u 12u(mobile)">
+						$conn = null;
+					} catch(PDOException $ex) { echo $ex->getMessage(); }
+					?>
 
-							<section>
-								<h2>Who are you guys?</h2>
-								<ul class="small-image-list">
-									<li>
-										<h4>Jane Anderson</h4>
-										<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo facilisis amet quis.</p>
-									</li>
-									<li>
-										<h4>James Doe</h4>
-										<p>Vitae magna eget odio amet mollis justo facilisis amet quis. Sed sagittis consequat.</p>
-									</li>
-								</ul>
-							</section>
-
-						</div>
-						<div class="4u 12u(mobile)">
-
-							<section>
-								<h2>How about some links?</h2>
-								<div>
-									<div class="row">
-										<div class="6u 12u(mobile)">
-											<ul class="link-list">
-												<li><a href="#">Sed neque nisi consequat</a></li>
-												<li><a href="#">Dapibus sed mattis blandit</a></li>
-												<li><a href="#">Quis accumsan lorem</a></li>
-												<li><a href="#">Suspendisse varius ipsum</a></li>
-												<li><a href="#">Eget et amet consequat</a></li>
-											</ul>
-										</div>
-										<div class="6u 12u(mobile)">
-											<ul class="link-list">
-												<li><a href="#">Quis accumsan lorem</a></li>
-												<li><a href="#">Sed neque nisi consequat</a></li>
-												<li><a href="#">Eget et amet consequat</a></li>
-												<li><a href="#">Dapibus sed mattis blandit</a></li>
-												<li><a href="#">Vitae magna sed dolore</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</section>
-
-						</div>
-					</div>
-					<div class="row main-row">
-						<div class="6u 12u(mobile)">
-
-							<section>
-								<h2>An assortment of pictures and text</h2>
-								<p>Duis neque nisi, dapibus sed mattis quis, rutrum et accumsan.
-								Suspendisse nibh. Suspendisse vitae magna eget odio amet mollis
-								justo facilisis quis. Sed sagittis mauris amet tellus gravida
-								lorem ipsum dolor sit amet consequat blandit lorem ipsum dolor
-								sit amet consequat sed dolore.</p>
-								<ul class="big-image-list">
-									<li>
-										<h3>Magna Gravida Dolore</h3>
-										<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo
-										facilisis amet quis consectetur in, sollicitudin vitae justo. Cras
-										Maecenas eu arcu purus, phasellus fermentum elit.</p>
-									</li>
-									<li>
-										<h3>Magna Gravida Dolore</h3>
-										<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo
-										facilisis amet quis consectetur in, sollicitudin vitae justo. Cras
-										Maecenas eu arcu purus, phasellus fermentum elit.</p>
-									</li>
-									<li>
-										<h3>Magna Gravida Dolore</h3>
-										<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo
-										facilisis amet quis consectetur in, sollicitudin vitae justo. Cras
-										Maecenas eu arcu purus, phasellus fermentum elit.</p>
-									</li>
-								</ul>
-							</section>
-
-						</div>
-						<div class="6u 12u(mobile)">
-
-							<article class="blog-post">
-								<h2>Just another blog post</h2>
-								<a class="comments" href="#">33 comments</a>
-								<h3>Magna Gravida Dolore</h3>
-								<p>Aenean non massa sapien. In hac habitasse platea dictumst.
-								Maecenas sodales purus et nulla sodales aliquam. Aenean ac
-								porttitor metus. In hac habitasse platea dictumst. Phasellus
-								blandit turpis in leo scelerisque mollis. Nulla venenatis
-								ipsum nec est porta rhoncus. Mauris sodales sed pharetra
-								nisi nec consectetur. Cras elit magna, hendrerit nec
-								consectetur in, sollicitudin vitae justo. Cras amet aliquet
-								Aliquam ligula turpis, feugiat id fermentum malesuada,
-								rutrum eget turpis. Mauris sodales sed pharetra nisi nec
-								consectetur. Cras elit magna, hendrerit nec consectetur
-								in sollicitudin vitae.</p>
-								<footer class="controls">
-									<a href="#" class="button">Continue Reading</a>
-								</footer>
-							</article>
-
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="footer-wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="8u 12u(mobile)">
-
-							<section>
-								<h2>How about a truckload of links?</h2>
-								<div>
-									<div class="row">
-										<div class="3u 12u(mobile)">
-											<ul class="link-list">
-												<li><a href="#">Sed neque nisi consequat</a></li>
-												<li><a href="#">Dapibus sed mattis blandit</a></li>
-												<li><a href="#">Quis accumsan lorem</a></li>
-												<li><a href="#">Suspendisse varius ipsum</a></li>
-												<li><a href="#">Eget et amet consequat</a></li>
-											</ul>
-										</div>
-										<div class="3u 12u(mobile)">
-											<ul class="link-list">
-												<li><a href="#">Quis accumsan lorem</a></li>
-												<li><a href="#">Sed neque nisi consequat</a></li>
-												<li><a href="#">Eget et amet consequat</a></li>
-												<li><a href="#">Dapibus sed mattis blandit</a></li>
-												<li><a href="#">Vitae magna sed dolore</a></li>
-											</ul>
-										</div>
-										<div class="3u 12u(mobile)">
-											<ul class="link-list">
-												<li><a href="#">Sed neque nisi consequat</a></li>
-												<li><a href="#">Dapibus sed mattis blandit</a></li>
-												<li><a href="#">Quis accumsan lorem</a></li>
-												<li><a href="#">Suspendisse varius ipsum</a></li>
-												<li><a href="#">Eget et amet consequat</a></li>
-											</ul>
-										</div>
-										<div class="3u 12u(mobile)">
-											<ul class="link-list">
-												<li><a href="#">Quis accumsan lorem</a></li>
-												<li><a href="#">Sed neque nisi consequat</a></li>
-												<li><a href="#">Eget et amet consequat</a></li>
-												<li><a href="#">Dapibus sed mattis blandit</a></li>
-												<li><a href="#">Vitae magna sed dolore</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</section>
-
-						</div>
-						<div class="4u 12u(mobile)">
-
-							<section>
-								<h2>Something of interest</h2>
-								<p>Duis neque nisi, dapibus sed mattis quis, rutrum accumsan sed.
-								Suspendisse eu varius nibh. Suspendisse vitae magna eget odio amet
-								mollis justo facilisis quis. Sed sagittis mauris amet tellus gravida
-								lorem ipsum dolor sit amet consequat blandit.</p>
-								<footer class="controls">
-									<a href="#" class="button">Oh, please continue ....</a>
-								</footer>
-							</section>
-
-						</div>
-					</div>
-					<div class="row">
-						<div class="12u">
-
-							<div id="copyright">
-								&copy; Untitled. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
-							</div>
-
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,8 @@
 <?php
+	include '../includes/login.php';
+?>
 
-    session_start();
+<?php
 
     if(isset($_GET['id_friend'])){
 

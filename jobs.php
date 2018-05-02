@@ -13,18 +13,6 @@
 		<title>Minimaxing by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<style>
-
-		#main section
-		{
-		 	border : black solid;
-		}
-		#main section h2
-		{
-
-			text-align : center;
-		}
-		</style>
 	</head>
 
 	<body>
@@ -69,10 +57,10 @@
 					if($_SESSION['admin']=="Uset"){
 							echo '<h1 style = "text-align : center;"></h1></br></br>';
 						}
-			
+
 				?>
-				
-					
+
+
 					<div class="row main-row">
 					<?php
 					$sql = "SELECT nom, prenom, titre, objet, contact FROM emploi E , user U WHERE E.id_admin = U.id_user;";
@@ -94,11 +82,12 @@
 					?>
 
 					</div>
+				</div>
 			</div>
+		</div>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 
 	</body>
 </html>
-
