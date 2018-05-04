@@ -9,6 +9,7 @@
             <title>Social Media Professionnel</title>
             <meta charset = "utf-8" />
             <link rel="stylesheet" href="../assets/css/main.css" />
+			<link rel="icon" type="image/png" href="../assets/css/images/favicon.png" />
         </head>
         <!-- section du corps (body) -->
         <body>
@@ -44,6 +45,7 @@
 		                    </div>
 		                </div>
 		            </div>
+					<div id="deconnexion"><a href="logout.php">Déconnexion</a></div>
 		        </div>
                 <div id="banner-wrapper">
                     <div class="container">
@@ -52,7 +54,8 @@
 							<span>
 								<form method = "post" action ="videoPubliTraitement.php" enctype = "multipart/form-data">
 									<table>
-									<tr><td><input type = "file" name ="video"/></td></tr>									</table>
+									<tr><td><input type = "file" name ="video"/></td></tr>
+									</table>
 								<input type = "submit" name = "submit" value ="Choisir"/>
 							</form>
 						</span>

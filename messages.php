@@ -1,8 +1,9 @@
 <?php
 	include 'includes/login.php';
 	include 'includes/userInfo.php';
-	try{			
-				
+
+	try{
+
         			$date = date("Y-m-d H:i:s");
 				$conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
 	        		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -11,7 +12,7 @@
 				$arrayId[]='';
 	         		while($resultat = $resultats->fetch(PDO::FETCH_OBJ))
 				{
-				$arrayId[]=$resultat->id_user1;	
+				$arrayId[]=$resultat->id_user1;
 				echo $resultat->id_user1;
 				}
 				$conn = null;
@@ -23,7 +24,7 @@
 			        $stmt->execute();
 				$conn = null;
 			}catch (PDOException $ex){ echo $ex->getMessage();}
-			
+
 
 ?>
 
@@ -38,6 +39,7 @@
 		<title>Social Media Professionnel</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" type="image/png" href="assets/css/images/favicon.png" />
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -72,12 +74,13 @@
 						</div>
 					</div>
 				</div>
+				<div id="deconnexion"><a href="forms/logout.php">Déconnexion</a></div>
 			</div>
 			<div id="main" >
-				<?php 
+				<?php
 
 				echo '<div class="container" style ="width: 300px;">';
-			
+
 				echo '<h2><a href="mynetworkMessage.php" class="button" style = "  text-align: center;">Nouvelle conversation</a></h2>';
 				echo '</div></br></br>';
 
@@ -96,7 +99,7 @@
 					{
 					$tab[] = $resultat->id_user2;
 					echo '<div class="container" style ="width: 500px;">';
-					
+
 					echo '<section>';
 					echo '</br><h2><img src ="assets/css/images/'.$resultat->path.'" alt = "pp" style = "width: 60px; height: 60px; border-radius: 30px; border: black solid;" /> '.$resultat->prenom.' '.$resultat->nom.'</h2>';
 				echo '<h2><a href="forms/readMessages.php?id='.$resultat->id_user2.'&img2='.$resultat->path.'" class="button" style = "text-align: center; ';

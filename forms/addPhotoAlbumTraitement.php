@@ -20,7 +20,7 @@ $conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
 	$resultat = $resultats->fetch(PDO::FETCH_OBJ);
 	$id = $resultat->id;
 
-        $nom = $_POST['name'];
+        $nom = $_POST['name2'];
 	 $path = $id.strrchr($_FILES['photo']['name'],'.');
 	$resultat = move_uploaded_file($_FILES['photo']['tmp_name'],"../assets/css/images/".$path);
 	$sql = "INSERT INTO `media` VALUES(".$id.",'".$path."','".$nom."')";

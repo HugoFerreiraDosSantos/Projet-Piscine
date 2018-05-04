@@ -2,15 +2,16 @@
 	SESSION_START();
 	?>
 
-	<!DOCTYPE HTML> 
+	<!DOCTYPE HTML>
 
 	<html>
-	  <head> 
-		<META charset="utf-8" /> 
-		<title>Social Media Professionnel</title> 
+	  <head>
+		<META charset="utf-8" />
+		<title>Social Media Professionnel</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script src = "assets/js/carrousel.js"></script>	
+		<script src = "assets/js/carrousel.js"></script>
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" type="image/png" href="assets/css/images/favicon.png" />
 
 		<style>
 			#carrousel{
@@ -19,7 +20,7 @@
 				width: 700px;
 				margin: auto;
 				}
-	
+
 			#carrousel ul li{
 				position: absolute;
 				top: 0;
@@ -27,7 +28,7 @@
 				list-style-type : none;
 				}
 
-	
+
 	#Thumbs ul li
 	{
 		position : relative;
@@ -35,10 +36,10 @@
 		list-style-type : none;
 	}
 	</style>
-	  </head> 
-	  
+	  </head>
 
-<body> 
+
+<body>
 	<div id="page-wrapper">
 		<div id="header-wrapper">
 			<div class="container">
@@ -71,10 +72,11 @@
 					</div>
 				</div>
 			</div>
+			<div id="deconnexion"><a href="forms/logout.php">Déconnexion</a></div>
 		</div>
 	<div id="banner-wrapper">
 		<div class ="container">
-		
+
 			<h2 id = "Thumbs" style = "text-align: center;">
 		<ul>
 		<?php $sql = "SELECT A.id_media,path,nom FROM media M , album_media A WHERE A.id_album = ".$_GET['id']." AND A.id_media = M.id_media ;";
@@ -83,7 +85,7 @@
 						$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 						$resultats = $conn->query($sql);
 						$i = 1;
-						
+
 							while($resultat = $resultats->fetch(PDO::FETCH_OBJ))
 						{
 						echo '<li><a href = "forms/nomPhoto.php?name='.$resultat->nom.'&album='.$_GET['id'].'&id='.$resultat->id_media.'" ><img src="assets/css/images/'.$resultat->path.'" width="100" height="50" class="img'.$i.'" TITLE ="'.$resultat->nom.'"/></li></a>';
@@ -95,16 +97,16 @@
 		</ul>
 		</h2>
 		<span id = "buttons" style = "text-align: center;"></span>
-			
+
 		</div>
-	</div>	
+	</div>
 
 
 	<div id="main">
 	<div class ="container">
 		<div class="row main-row">
 		<div class="4u 12u(mobile)">
-		
+
 		</div>
 		<div class="4u 12u(mobile)">
 
@@ -115,7 +117,7 @@
 
 	<?php $sql = "SELECT path FROM media M , album_media A WHERE A.id_album = ".$_GET['id']." AND A.id_media = M.id_media ;";
 						try{
-						
+
 						$conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
 						$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 						$resultats = $conn->query($sql);
@@ -137,13 +139,11 @@
 </div>
 	</div>
 
-			
 
-	
+
+
 	</div>
 
 	 </body>
-	 
-	 </html>
- 
 
+	 </html>

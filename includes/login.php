@@ -12,6 +12,7 @@ if(!isset($_SESSION['id_user'])) {
             <title>Social Media Professionnel</title>
             <meta charset = "utf-8" />
             <link rel="stylesheet" href="http://teezer.org/piscine/assets/css/main.css" />
+            <link rel="icon" type="image/png" href="http://teezer.org/piscine/assets/css/images/favicon.png" />
         </head>
         <!-- section du corps (body) -->
         <body>
@@ -24,9 +25,9 @@ if(!isset($_SESSION['id_user'])) {
                                 <form method="POST" action="<?=$_SERVER['PHP_SELF']?>">
                                 <table>
                                   	<tr><td><label>Pseudo :</label></td>
-                                  	<td><input type = "text" name = "pseudo"/></td></tr>
+                                  	<td><input type = "text" name = "pseudo" required onBlur="pseudo.value = pseudo.value.replace(/[^A-Za-z0-9_@-]/gi, '');"/></td></tr>
                                   	<tr><td><label>Email :</label></td>
-                                  	<td><input type = "mail" name = "email"/></td></tr>
+                                  	<td><input type = "mail" name = "email" required onBlur="email.value = email.value.replace(/[^A-Za-z0-9_@.-]/gi, '');"/></td></tr>
                                 </table>
                               	<input type = "submit" value = "Connexion" name = "connexion"/>
 

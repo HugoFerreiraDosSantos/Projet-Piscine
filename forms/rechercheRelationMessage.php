@@ -11,6 +11,7 @@ include '../includes/login.php';
     <title>Social Media Professionnel</title>
     <meta charset = "utf-8" />
     <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="icon" type="image/png" href="../assets/css/images/favicon.png" />
 </head>
 <!-- section du corps (body) -->
 <body>
@@ -46,6 +47,7 @@ include '../includes/login.php';
                     </div>
                 </div>
             </div>
+            <div id="deconnexion"><a href="logout.php">Déconnexion</a></div>
         </div>
         <div id="banner-wrapper">
             <div class="container">
@@ -55,9 +57,9 @@ include '../includes/login.php';
                     <form method="POST" action="<?=$_SERVER['PHP_SELF']?>">
                     <table>
                         <tr><td><label>Prenom :</label></td>
-                        <td><input type = "text" name = "prenom"/></td></tr>
+                        <td><input type = "text" name = "prenom" required onBlur="prenom.value = prenom.value.replace(/[^A-Za-z-\s]/gi, '');"/></td></tr>
                         <tr><td><label>Nom :</label></td>
-                        <td><input type = "text" name = "nom"/><br /></td></tr>
+                        <td><input type = "text" name = "nom" required onBlur="nom.value = nom.value.replace(/[^A-Za-z-\s]/gi, '');"/><br /></td></tr>
                     </table>
                     <input type = "submit" value = "Rechercher" name = "rechercher"/>
                     </form>

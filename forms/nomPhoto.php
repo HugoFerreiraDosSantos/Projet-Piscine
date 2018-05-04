@@ -14,6 +14,7 @@ if(!isset($_GET['name']) || !isset($_GET['album'])  || !isset($_GET['id'])){
             <title>Social Media Professionnel</title>
             <meta charset = "utf-8" />
             <link rel="stylesheet" href="../assets/css/main.css" />
+			<link rel="icon" type="image/png" href="../assets/css/images/favicon.png" />
         </head>
         <!-- section du corps (body) -->
         <body>
@@ -49,6 +50,7 @@ if(!isset($_GET['name']) || !isset($_GET['album'])  || !isset($_GET['id'])){
 		                    </div>
 		                </div>
 		            </div>
+					<div id="deconnexion"><a href="logout.php">Déconnexion</a></div>
 		        </div>
                 <div id="banner-wrapper">
                     <div class="container">
@@ -58,7 +60,7 @@ if(!isset($_GET['name']) || !isset($_GET['album'])  || !isset($_GET['id'])){
                                 <form method="POST" action="nomPhotoTraitement.php">
                                 <table>
                                   	<tr><td><label>Nouveau nom : </label></td>
-                                  	<td><input type = "text" name = "nom" required/></td></tr>
+                                  	<td><input type = "text" name = "nom" required onBlur="nom.value = nom.value.replace(/[^A-Za-z0-9_-]/gi, '');"/></td></tr>
                                 </table>
 				</br>
 				<?php echo '<input type = "hidden" value = "'.$_GET['name'].'" name = "id"/>'; ?>

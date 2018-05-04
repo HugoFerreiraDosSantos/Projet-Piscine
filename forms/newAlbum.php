@@ -9,6 +9,7 @@
             <title>Social Media Professionnel</title>
             <meta charset = "utf-8" />
             <link rel="stylesheet" href="../assets/css/main.css" />
+			<link rel="icon" type="image/png" href="../assets/css/images/favicon.png" />
         </head>
         <!-- section du corps (body) -->
         <body>
@@ -44,6 +45,7 @@
 		                    </div>
 		                </div>
 		            </div>
+					<div id="deconnexion"><a href="logout.php">Déconnexion</a></div>
 		        </div>
                 <div id="banner-wrapper">
                     <div class="container">
@@ -53,7 +55,7 @@
                                 <form method="POST" action="newAlbumTraitement.php">
                                 <table>
                                   	<tr><td><label>Nom de l'album :</label></td>
-                                  	<td><input type = "text" name = "nom" required/></td></tr>
+                                  	<td><input type = "text" name = "nom" required onBlur="nom.value = nom.value.replace(/[^A-Za-z0-9_-]/gi, '');"/></td></tr>
                                 </table>
 				</br>
                               	<input type = "submit" value = "Ajouter" name = "ajouter"/>

@@ -29,9 +29,9 @@
 
                              <nav id="nav">
                                  <span id = "imgNom"><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom']; ?></span>
-                                 <a href="../index.php">Accueil</a>
+                                 <a href="../index.php" class="current-page-item" >Accueil</a>
                                  <a href="../mynetwork.php">Réseau</a>
-                                 <a href="../myprofile.php" class="current-page-item">Profil&nbsp;</a>
+                                 <a href="../myprofile.php">Profil&nbsp;</a>
                                  <a href="../notifications.php">Notifs&nbsp;</a>
                                  <a href="../messages.php">Messages</a>
                                  <a href="../jobs.php">Emplois</a>
@@ -54,46 +54,51 @@
          </div>
 		 <div id="banner-wrapper">
 			 <div class="container">
-				 <div id="modifProfil">
-					 <h2>Modifier le profil</h2>
+				 <div id="ajoutPubli">
+					 <h2>Ajouter une publication</h2>
 					 <span>
-	<form method = "post" action = "formulaireTraitement.php">
+	<form method = "post" action = "formulairePubliTraitement.php">
 		<table>
 
-		<tr><td><label>Statut :</label>
-		<td><input type="text" size="26" name = "statut" value = "<?php echo $info[0]; ?>" required onBlur="statut.value = statut.value.replace(/[^A-Za-z0-9_-\s]/gi, '');"/>
+		<tr><td><label>Lieu :</label>
+		<td><input type="text" size="26" name = "lieu" required onBlur="lieu.value = lieu.value.replace(/[^A-Za-z0-9_-\s]/gi, '');"/>
 		</td></tr>
 
-		<tr><td><label>Prenom :</label>
-		<td><input type="text" size="26" name = "prenom" value = "<?php echo $_SESSION['prenom']; ?>" required onBlur="prenom.value = prenom.value.replace(/[^A-Za-z-\s]/gi, '');"/>
+		<tr><td><label>Comment te sens-tu ? :</label>
+		<td><input type="text" size="26" name = "sens" required onBlur="sens.value = sens.value.replace(/[^A-Za-z-\s]/gi, '');"/>
 		</td></tr>
 
-		<tr><td><label>Nom :</label>
-		<td><input type="text" size="26" name = "nom" value = "<?php echo $_SESSION['nom']; ?>" required onBlur="nom.value = nom.value.replace(/[^A-Za-z-\s]/gi, '');"/>
+		<tr><td><label>Que fais-tu ? :</label>
+		<td><input type="text" size="26" name = "fais" required onBlur="fais.value = fais.value.replace(/[^A-Za-z-\s]/gi, '');"/>
 		</td></tr>
 
-		<tr><td><label>Date de Naissance :</label>
-		<td><input type="date" size="26" name = "date" value = "<?php echo $info[1]; ?>" required/>
-		</td></tr>
+		<tr><td><label>Visibilité :</label></td>
+                        <td><select name = "visibilite">
+                            <option value="0" selected>Publique</option>
+                            <option value="1">Relations uniquement</option>
+			    <option value="2">Limitée</option>
+                        </select></td>
+			 <td><select name = "listVisible[]" multiple style ="height: 40px;">
+                            <?php $sql= "SELECT U.prenom, U.nom , U.id_user FROM user U , relation R WHERE R.id_user = ".$_SESSION['id_user']. " AND U.id_user = R.id_friend ;";
+			    try
+				{
+				$conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
+      				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				$resultats = $conn->query($sql);
+			        while($resultat = $resultats->fetch(PDO::FETCH_OBJ))
+				{
+				echo '<option value ="'.$resultat->id_user.'">'.$resultat->prenom.' '.$resultat->nom.'</option>';
 
-		<tr><td><label>Ville :</label>
-		<td><input type="text" size="26" name = "ville" value = "<?php echo $info[2]; ?>" required onBlur="ville.value = ville.value.replace(/[^A-Za-z-\s]/gi, '');"/>
-		</td></tr>
+				}
+				}catch(PDOException $ex) {echo $ex->getMessage();}
+				?>
+                        </select></td>
 
-		<tr><td><label>Formation :</label>
-		<td><textarea name = "formation" style= "resize: none;" required onBlur="formation.value = formation.value.replace(/[<>]/gi, '');"><?php echo $info[3]; ?></textarea>
-		</td></tr>
-
-		<tr><td><label>Experiences :</label>
-		<td><textarea name = "experiences" style= "resize: none;" required onBlur="experiences.value = experiences.value.replace(/[<>]/gi, '');"><?php echo $info[4]; ?></textarea>
-		</td></tr>
-
-		<tr><td><label>Competences :</label>
-		<td><textarea name = "competences" style= "resize: none;" required onBlur="competences.value = competences.value.replace(/[<>]/gi, '');"><?php echo $info[5]; ?></textarea>
-		</td></tr>
+		</tr>
 
 		</table>
-		<input type = "submit" value = "Modifier" name = "bouton"/>
+		<?php echo '<input type = "hidden" value ="'.$_POST['texte'].'"  name = "texte"/>'; ?>
+		<input type = "submit" value = "Envoyer" name = "bouton"/>
 
 	</form>
 </span>

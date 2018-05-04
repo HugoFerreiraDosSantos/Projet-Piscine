@@ -23,7 +23,7 @@ $conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
 
 	$resultat = move_uploaded_file($_FILES['photo']['tmp_name'],"../assets/css/images/".$nom);
 	$sql = "INSERT INTO `media` VALUES(".$id.",'".$nom."','".$_FILES['photo']['name']."')";
-	if(isset($_SESSION['publi'])) {unset($_SESSION['publi']);}
+	
 	$_SESSION['publi']=$id;
         $stmt = $conn->prepare($sql);
 	$stmt->execute();

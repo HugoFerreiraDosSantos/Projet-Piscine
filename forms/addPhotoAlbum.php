@@ -13,6 +13,7 @@ if(isset($_GET['id'])){
             <title>Social Media Professionnel</title>
             <meta charset = "utf-8" />
             <link rel="stylesheet" href="../assets/css/main.css" />
+			<link rel="icon" type="image/png" href="../assets/css/images/favicon.png" />
         </head>
         <!-- section du corps (body) -->
         <body>
@@ -48,6 +49,7 @@ if(isset($_GET['id'])){
 		                    </div>
 		                </div>
 		            </div>
+					<div id="deconnexion"><a href="logout.php">Déconnexion</a></div>
 		        </div>
                 <div id="banner-wrapper">
                     <div class="container">
@@ -58,7 +60,7 @@ if(isset($_GET['id'])){
 								<table>
 								<tr><td><input type = "file" name ="photo"/></td></tr>
 								<tr><td><label>Quel est le nom de la nouvelle photo ? </label></td>
-								<td><input type = "text" name = "name" required /></td></tr>
+								<td><input type = "text" name = "name2" required onBlur="name2.value = name2.value.replace(/[^A-Za-z0-9_-]/gi, '');"/></td></tr>
 								</table>
 								<?php echo '<input type = "hidden" value ="'.$_GET['id'].'" name = "id_album"/>' ?>
 								<input type = "submit" name = "submit" value ="Ajouter"/>

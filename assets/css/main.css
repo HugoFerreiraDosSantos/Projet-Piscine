@@ -524,7 +524,7 @@
 					position: absolute;
 					z-index: 1;
 					width: 100%;
-					margin-left: 39%;
+					margin-left: 42%;
 					bottom: 40px;
 					left: 0;
 					font-size: 1.2em;
@@ -626,6 +626,82 @@
 						text-align: center;
 						opacity: 0.8;
 					}
+
+					#ajoutPubli {
+					-moz-box-sizing: content-box;
+					-webkit-box-sizing: content-box;
+					-ms-box-sizing: content-box;
+					box-sizing: content-box;
+					position: relative;
+					width: 1160px;
+					height: 370px;
+					box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+					border-radius: 10px;
+					padding: 20px;
+					background: #fff url(images/banner.jpg) repeat 20px 20px;
+					background-size: 1160px 370px;
+				}
+
+
+					#ajoutPubli h2 {
+						position: absolute;
+						z-index: 1;
+						width: 100%;
+						top: 50px;
+						left: 0;
+						font-size: 3.3em;
+						color: #fff;
+						text-align: center;
+						letter-spacing: -2px;
+					}
+
+					#ajoutPubli span {
+						display: block;
+						position: absolute;
+						z-index: 1;
+						width: 100%;
+						bottom: 60px;
+						left: 0;
+						font-size: 1.6em;
+						color: #fff;
+						text-align: center;
+						letter-spacing: -1px;
+						opacity: 0.8;
+					}
+
+					#ajoutPubli table {
+						display: block;
+						position: absolute;
+						z-index: 1;
+						width: 100%;
+						margin-left: 30%;
+						bottom: 40px;
+						left: 0;
+						font-size: 1.2em;
+						color: #fff;
+						text-align: center;
+						opacity: 0.8;
+					}
+
+					#ajoutPubli td {
+						padding: 0px 5px 0px 5px;
+						text-align: right;
+						vertical-align: bottom;
+					}
+
+					#ajoutPubli a {
+						display: block;
+						position: absolute;
+						z-index: 1;
+						margin-left: 85%;
+						bottom: 40px;
+						left: 0;
+						font-size: 1.4em;
+						color: #fff;
+						text-align: center;
+						opacity: 0.8;
+					}
+
 
 
 	#inscription {
@@ -979,6 +1055,55 @@
 	}
 
 /* Containers */
+
+	#deconnexion {
+		position: relative;
+		top: -10px;
+		left: 7.5%;
+		height: 0px;
+	}
+
+	#deconnexion a {
+		text-decoration: none;
+		color: #fff;
+		padding: 10px 20px 10px 20px;
+		outline: 0;
+		vertical-align: center;
+
+		background-image: -moz-linear-gradient(top, #008ead, #007b9d);
+		background-image: -webkit-linear-gradient(top, #008ead, #007b9d);
+		background-image: -ms-linear-gradient(top, #008ead, #007b9d);
+		background-image: linear-gradient(top, #008ead, #007b9d);
+		-moz-box-sizing: content-box;
+		-webkit-box-sizing: content-box;
+		-ms-box-sizing: content-box;
+		box-sizing: content-box;
+		position: relative;
+		border-radius: 10px;
+		border: solid 1px #006e8b;
+		box-shadow: inset 0px 0px 0px 1px #12a0bf, 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+		background-color: #007b9d;
+	}
+
+		#deconnexion a:hover {
+			background-image: -moz-linear-gradient(top, #0782a0, #077d9b);
+			background-image: -webkit-linear-gradient(top, #0782a0, #077d9b);
+			background-image: -ms-linear-gradient(top, #0782a0, #077d9b);
+			background-image: linear-gradient(top, #0782a0, #077d9b);
+			background-color: #0882a1;
+			box-shadow: inset 0px 1px 5px 1px rgba(0, 0, 0, 0.05), 0px 0px 5px 1px rgba(255, 255, 255, 0.05);
+		}
+
+		@media screen and (min-width: 1900px) {
+
+			#deconnexion {
+				position: relative;
+				top: -80px;
+				left: 10%;
+				height: 0px;
+			}
+
+		}
 
 	.container {
 		margin-left: auto;

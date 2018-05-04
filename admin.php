@@ -15,6 +15,7 @@ if($_SESSION['admin']=='User'){
     <title>Social Media Professionnel</title>
     <meta charset = "utf-8" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="icon" type="image/png" href="assets/css/images/favicon.png" />
 </head>
 <!-- section du corps (body) -->
 <body>
@@ -50,6 +51,7 @@ if($_SESSION['admin']=='User'){
                     </div>
                 </div>
             </div>
+            <div id="deconnexion"><a href="forms/logout.php">Déconnexion</a></div>
         </div>
         <div id="banner-wrapper">
             <div class="container">
@@ -59,18 +61,18 @@ if($_SESSION['admin']=='User'){
                     <form method="POST" action="<?=$_SERVER['PHP_SELF']?>">
                     <table>
                         <tr><td><label>Pseudo :</label></td>
-                        <td><input type = "text" name = "pseudo" required/></td></tr>
+                        <td><input type = "text" name = "pseudo" required onBlur="pseudo.value = pseudo.value.replace(/[^A-Za-z0-9_@-]/gi, '');"/></td></tr>
                         <tr><td><label>Email :</label></td>
-                        <td><input type = "mail" name = "email" required/><br /></td></tr>
+                        <td><input type = "mail" name = "email" required onBlur="email.value = email.value.replace(/[^A-Za-z0-9_@.-]/gi, '');"/><br /></td></tr>
                         <tr><td><label>Admin :</label></td>
                         <td><select name = "admin">
                             <option value="User" selected>User</option>
                             <option value="Admin">Admin</option>
                         </select></td></tr>
                         <tr><td><label>Nom :</label></td>
-                        <td><input type = "text" name = "nom" required/></td></tr>
+                        <td><input type = "text" name = "nom" required onBlur="nom.value = nom.value.replace(/[^A-Za-z-\s]/gi, '');"/></td></tr>
                         <tr><td><label>Prénom :</label></td>
-                        <td><input type = "text" name = "prenom" required onBlur="prenom.value = prenom.value.replace(/[^\w\s]/gi, '');"/></td></tr>
+                        <td><input type = "text" name = "prenom" required onBlur="prenom.value = prenom.value.replace(/[^A-Za-z-\s]/gi, '');"/></td></tr>
                     </table>
                     <input type = "submit" value = "Inscrire" name = "inscrire"/>
                     </form>
@@ -142,18 +144,13 @@ if(isset($_POST['inscrire'])){
                     $sql3 = "INSERT INTO `user` (`id_user`,`nom`,`prenom`) VALUES ('" . $id . "','" . $_POST['nom'] . "','" . $_POST['prenom'] . "');";
 
                     $count3 = $conn->exec($sql3);
-
-                    if ($count3 != 0) {
-                        echo "User ajouté";
-                    } else {
-                        echo "Erreur ajout";
-                    }
                 }
             }
 
             $conn = null;
 
-            header('Location: admin.php');
+            header('Location: '.$_SERVER['PHP_SELF']);
+            die;
         } catch(PDOException $err) {
             echo "ERROR: Unable to connect: " . $err->getMessage();
         }
@@ -169,15 +166,10 @@ if(isset($_POST['inscrire'])){
 
             $count = $conn->exec($sql);
 
-            if ($count3 != 0) {
-                echo "User supprimé";
-            } else {
-                echo "Erreur suppression";
-            }
-
             $conn = null;
 
-            header('Location: admin.php');
+            header('Location: '.$_SERVER['PHP_SELF']);
+            die;
         } catch(PDOException $err) {
             echo "ERROR: Unable to connect: " . $err->getMessage();
         }

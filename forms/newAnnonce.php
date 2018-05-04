@@ -9,6 +9,7 @@
             <title>Social Media Professionnel</title>
             <meta charset = "utf-8" />
             <link rel="stylesheet" href="../assets/css/main.css" />
+			<link rel="icon" type="image/png" href="../assets/css/images/favicon.png" />
         </head>
         <!-- section du corps (body) -->
         <body>
@@ -44,6 +45,7 @@
 		                    </div>
 		                </div>
 		            </div>
+					<div id="deconnexion"><a href="logout.php">Déconnexion</a></div>
 		        </div>
                 <div id="banner-wrapper">
                     <div class="container">
@@ -53,11 +55,11 @@
                                 <form method="POST" action="newAnnonceTraitement.php">
                                 <table>
                                   	<tr><td><label>Titre :</label></td>
-										<td><input type = "text" size="26" name = "titre"/></td></tr>
+										<td><input type = "text" size="26" name = "titre" required onBlur="titre.value = titre.value.replace(/[^A-Za-z0-9_-\s]/gi, '');"/></td></tr>
 										<tr><td><label>Objet :</label></td>
-										<td><textarea name = "objet"></textarea></td></tr>
+										<td><textarea name = "objet" style= "resize: none;" required onBlur="objet.value = objet.value.replace(/[<>]/gi, '');"></textarea></td></tr>
 										<tr><td><label>Contact :</label></td>
-										<td><input type = "mail" size="26" name = "contact"/><br /></td></tr>
+										<td><input type = "mail" size="26" name = "contact" required onBlur="contact.value = contact.value.replace(/[^A-Za-z0-9_@.-]/gi, '');"/><br /></td></tr>
 									 </table>
                               	<input type = "submit" value = "Ajouter" name = "ajouter"/>
 

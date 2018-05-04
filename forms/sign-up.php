@@ -9,6 +9,7 @@ if(!isset($_POST['pseudo']) || !isset($_POST['email']) || !isset($_POST['nom']) 
     <title>Social Media Professionnel</title>
     <meta charset = "utf-8" />
     <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="icon" type="image/png" href="../assets/css/images/favicon.png" />
 </head>
 <!-- section du corps (body) -->
 <body>
@@ -21,13 +22,13 @@ if(!isset($_POST['pseudo']) || !isset($_POST['email']) || !isset($_POST['nom']) 
                         <form method="POST" action="<?=$_SERVER['PHP_SELF']?>">
                         <table>
                             <tr><td><label>Pseudo :</label></td>
-                            <td><input type = "text" name = "pseudo"/></td></tr>
+                            <td><input type = "text" name = "pseudo" required onBlur="pseudo.value = pseudo.value.replace(/[^A-Za-z0-9_@-]/gi, '');"/></td></tr>
                             <tr><td><label>Email :</label></td>
-                            <td><input type = "mail" name = "email"/><br /></td></tr>
+                            <td><input type = "mail" name = "email" required onBlur="email.value = email.value.replace(/[^A-Za-z0-9_@.-]/gi, '');"/><br /></td></tr>
                             <tr><td><label>Nom :</label></td>
-                            <td><input type = "text" name = "nom"/></td></tr>
+                            <td><input type = "text" name = "nom" required onBlur="nom.value = nom.value.replace(/[^A-Za-z-\s]/gi, '');"/></td></tr>
                             <tr><td><label>Prénom :</label></td>
-                            <td><input type = "text" name = "prenom"/></td></tr>
+                            <td><input type = "text" name = "prenom" required onBlur="prenom.value = prenom.value.replace(/[^A-Za-z-\s]/gi, '');"/></td></tr>
                         </table>
                         <input type = "submit" value = "Inscription" name = "inscription"/>
                         </form>

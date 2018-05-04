@@ -4,7 +4,7 @@ include '../includes/login.php';
 
 try
 {
-$extensions_valides = array('mp4', 'mp4a', 'mp4b', 'mp4r', 'mp4v', 'mp4p','mkv','wmv','avi');
+$extensions_valides = array('mp4', 'mp4a', 'mp4b', 'mp4r', 'mp4v', 'mp4p');
 	if (!in_array(substr(strrchr($_FILES['video']['name'],'.'),1),$extensions_valides))
 	{
 	header('Location: '.$_SERVER["HTTP_REFERER"]);

@@ -14,6 +14,7 @@
 		<meta charset="utf-8" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="icon" type="image/png" href="../assets/css/images/favicon.png" />
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -48,11 +49,12 @@
 						</div>
 					</div>
 				</div>
+				<div id="deconnexion"><a href="logout.php">Déconnexion</a></div>
 			</div>
 			<div id="main" >
-				
-				<?php 
-				
+
+				<?php
+
 				try{
 				$conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
 	        		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -66,8 +68,8 @@
 				$sql="SELECT id_user1,contenu,date FROM `messagerie` WHERE";
 				$sql=$sql." (id_user1=".$_GET['id']." OR id_user2=".$_GET['id'].") AND";
 				$sql=$sql." (id_user1=".$_SESSION['id_user']." OR id_user2=".$_SESSION['id_user'].") ORDER BY date;";
-				
-					
+
+
 					$resultats = $conn->query($sql);
 	         			while($resultat = $resultats->fetch(PDO::FETCH_OBJ))
 					{
@@ -81,27 +83,27 @@
 						echo '<div  style = " padding: 10px 10px 10px 10px; text-align: left; position: relative; left: -10px;  width: 220px;  word-wrap: break-word; color: black; background: url(../assets/css/images/envoie.png) no-repeat ; background-size: 100% 100%;">'.$resultat->contenu.'</div></p>';
 						}
 
-					echo '</div>';	
+					echo '</div>';
 					}
-					
+
 					$conn = null;
 			}catch (PDOException $ex){ echo $ex->getMessage();}
 				?>
-				
+
 				</div>
-				
+
 				</div>
 				<div class="container"  style ="width: 600px; margin: auto;">
 				<?php echo '<form method ="post" action ="readMessagesTraitement.php">'; ?>
-				<textarea name ="newMessage" style ="width: 480px; height: 70px; margin: auto; resize: none;"></textarea>
-				<input class ="button" style ="position: absolute; height: 70px;" type ="submit" value ="Envoyer"/> 
-				<?php echo '<input type ="hidden" value ="'.$_GET['id'].'" name ="id"/>'; 
+				<textarea name ="newMessage" style ="width: 480px; height: 70px; margin: auto; resize: none;" required onBlur="newMessage.value = newMessage.value.replace(/[<>]/gi, '');"></textarea>
+				<input class ="button" style ="position: absolute; height: 70px;" type ="submit" value ="Envoyer"/>
+				<?php echo '<input type ="hidden" value ="'.$_GET['id'].'" name ="id"/>';
 				echo '<input type ="hidden" value ="'.$_GET['img2'].'" name ="img2"';?>
 				</form>
 				</div>
-				
+
 			</div>
-			
+
 		</div>
 
 		<!-- Scripts -->
