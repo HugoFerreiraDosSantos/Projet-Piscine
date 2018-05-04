@@ -2,6 +2,7 @@
 
 include '../includes/login.php';
 
+if(isset($_POST['id_album'])){
 try
 {
 $extensions_valides = array('jpg', 'jpeg','png','JPG');
@@ -26,7 +27,7 @@ $conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
         $stmt = $conn->prepare($sql);
 	$stmt->execute();
 
-	$sql = "INSERT INTO `album_media` VALUES (?, ?)"; 
+	$sql = "INSERT INTO `album_media` VALUES (?, ?)";
 	$stmt = $conn->prepare($sql);
 	$stmt->execute(array($_POST['id_album'],$id));
 	$conn = null;
@@ -36,6 +37,9 @@ $conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
 catch(PDOException $ex)
 {
 $ex->getMessage();
+}
+} else {
+	header('location: '.$_SERVER['HTTP_REFERER']);
 }
 
 ?>

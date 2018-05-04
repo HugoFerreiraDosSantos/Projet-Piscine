@@ -1,6 +1,7 @@
 <?php
 
 include 'includes/login.php';
+include 'includes/messageNonLu.php';
 
 if($_SESSION['admin']=='User'){
     header('Location: index.php');
@@ -11,7 +12,7 @@ if($_SESSION['admin']=='User'){
 <html>
 <!-- section principale avec titre -->
 <head>
-    <title>Social Media Professionel</title>
+    <title>Social Media Professionnel</title>
     <meta charset = "utf-8" />
     <link rel="stylesheet" href="assets/css/main.css" />
 </head>
@@ -32,7 +33,7 @@ if($_SESSION['admin']=='User'){
                                 <a href="mynetwork.php">Réseau</a>
                                 <a href="myprofile.php">Profil&nbsp;</a>
                                 <a href="notifications.php">Notifs&nbsp;</a>
-                                <a href="messages.php">Messages</a>
+                                <?php include 'includes/checkMessages.php'; ?>
                                 <a href="jobs.php">Emplois</a>
                                 <a href="album.php">Album&nbsp;</a>
                                 <?php if($_SESSION['admin']=="Admin"){
@@ -58,18 +59,18 @@ if($_SESSION['admin']=='User'){
                     <form method="POST" action="<?=$_SERVER['PHP_SELF']?>">
                     <table>
                         <tr><td><label>Pseudo :</label></td>
-                        <td><input type = "text" name = "pseudo"/></td></tr>
+                        <td><input type = "text" name = "pseudo" required/></td></tr>
                         <tr><td><label>Email :</label></td>
-                        <td><input type = "mail" name = "email"/><br /></td></tr>
+                        <td><input type = "mail" name = "email" required/><br /></td></tr>
                         <tr><td><label>Admin :</label></td>
                         <td><select name = "admin">
                             <option value="User" selected>User</option>
                             <option value="Admin">Admin</option>
                         </select></td></tr>
                         <tr><td><label>Nom :</label></td>
-                        <td><input type = "text" name = "nom"/></td></tr>
+                        <td><input type = "text" name = "nom" required/></td></tr>
                         <tr><td><label>Prénom :</label></td>
-                        <td><input type = "text" name = "prenom"/></td></tr>
+                        <td><input type = "text" name = "prenom" required onBlur="prenom.value = prenom.value.replace(/[^\w\s]/gi, '');"/></td></tr>
                     </table>
                     <input type = "submit" value = "Inscrire" name = "inscrire"/>
                     </form>

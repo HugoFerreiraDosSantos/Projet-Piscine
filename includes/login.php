@@ -9,7 +9,7 @@ if(!isset($_SESSION['id_user'])) {
         <html>
         <!-- section principale avec titre -->
         <head>
-            <title>Social Media Professionel</title>
+            <title>Social Media Professionnel</title>
             <meta charset = "utf-8" />
             <link rel="stylesheet" href="http://teezer.org/piscine/assets/css/main.css" />
         </head>

@@ -1,5 +1,9 @@
 <?php
- if(!isset($_POST['nom']))
+	include '../includes/login.php';
+?>
+
+<?php
+ if(!isset($_POST['nom']) || !isset($_POST['id']) || !isset($_POST['album']))
  {
 	 header('Location: '.$_SERVER['HTTP_REFERER']);
 	 exit;
@@ -14,11 +18,11 @@
 			  $sql = "UPDATE `media` SET nom = '".$_POST['nom']."' WHERE nom = '".$_POST['id']."';";
 			  $conn->exec($sql);
         	$conn = null;
-		  
+
               header('Location: ../photos.php?id='.$_POST["album"]);
 				exit;
-		
-			
+
+
 	 }
 	 catch (PDOException $ex)
 	 {

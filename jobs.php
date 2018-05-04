@@ -1,5 +1,6 @@
 <?php
 	include 'includes/login.php';
+	include 'includes/messageNonLu.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -10,7 +11,7 @@
 -->
 <html>
 	<head>
-		<title>Minimaxing by HTML5 UP</title>
+		<title>Social Media Professionnel</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
@@ -31,7 +32,7 @@
 									<a href="mynetwork.php">Réseau</a>
 									<a href="myprofile.php">Profil&nbsp;</a>
 									<a href="notifications.php">Notifs&nbsp;</a>
-									<a href="messages.php">Messages</a>
+									<?php include 'includes/checkMessages.php'; ?>
 									<a href="jobs.php"  class="current-page-item">Emplois</a>
 									<a href="album.php">Album&nbsp;</a>
 									<?php if($_SESSION['admin']=="Admin"){
@@ -54,7 +55,7 @@
 				<?php   if($_SESSION['admin']=="Admin"){
 							echo '<h1 style = "text-align : center;"><a href="forms/newAnnonce.php" class="button">Ajouter une annonce</a>   <a href="forms/suppAnnonce.php" class="button" style = "margin-left : 20px;">Supprimer une annonce</a></h1></br></br>';
 						}
-					if($_SESSION['admin']=="Uset"){
+					if($_SESSION['admin']=="User"){
 							echo '<h1 style = "text-align : center;"></h1></br></br>';
 						}
 

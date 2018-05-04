@@ -1,6 +1,8 @@
 <?php
 	include 'includes/login.php';
 	include 'includes/userInfo.php';
+	include 'includes/messageNonLu.php';
+
 ?>
 
 <!DOCTYPE HTML>
@@ -11,7 +13,7 @@
 -->
 <html>
 	<head>
-		<title>Minimaxing by HTML5 UP</title>
+		<title>Social Media Professionnel</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
@@ -76,8 +78,8 @@
 									<a href="mynetwork.php">Réseau</a>
 									<a href="myprofile.php" class="current-page-item">Profil&nbsp;</a>
 									<a href="notifications.php">Notifs&nbsp;</a>
-									<a href="messages.php">Messages</a>
-									<a href="jobs.php">Emplois</a>
+									<?php include 'includes/checkMessages.php'; ?>
+ 									<a href="jobs.php">Emplois</a>
 								    <a href="album.php">Album&nbsp;</a>
 									<?php if($_SESSION['admin']=="Admin"){
 										echo '<a href="admin.php">Admin</a>';

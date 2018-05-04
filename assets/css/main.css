@@ -6,6 +6,10 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+	#page-wrapper {
+		min-height: 1000px;
+	}
+
 	#imgNom
 	{
 		color: #fff;
@@ -98,7 +102,230 @@
 			opacity: 0.8;
 		}
 
+		#modifAlbum {
+			-moz-box-sizing: content-box;
+			-webkit-box-sizing: content-box;
+			-ms-box-sizing: content-box;
+			box-sizing: content-box;
+			position: relative;
+			width: 1160px;
+			height: 265px;
+			box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+			border-radius: 10px;
+			padding: 20px;
+			background: #fff url(images/banner.jpg) repeat 20px 20px;
+			background-size: 1160px 265px;
+		}
 
+
+			#modifAlbum h2 {
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				top: 50px;
+				left: 0;
+				font-size: 3.3em;
+				color: #fff;
+				text-align: center;
+				letter-spacing: -2px;
+			}
+
+			#modifAlbum span {
+				display: block;
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				bottom: 60px;
+				left: 0;
+				font-size: 1.6em;
+				color: #fff;
+				text-align: center;
+				letter-spacing: -1px;
+				opacity: 0.8;
+			}
+
+			#modifAlbum table {
+				display: block;
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				margin-left: 30%;
+				bottom: 40px;
+				left: 0;
+				font-size: 1.2em;
+				color: #fff;
+				text-align: center;
+				opacity: 0.8;
+			}
+
+			#modifAlbum td {
+				padding: 0px 5px 0px 5px;
+				text-align: right;
+				vertical-align: bottom;
+			}
+
+			#modifAlbum a {
+				display: block;
+				position: absolute;
+				z-index: 1;
+				margin-left: 85%;
+				bottom: 40px;
+				left: 0;
+				font-size: 1.4em;
+				color: #fff;
+				text-align: center;
+				opacity: 0.8;
+			}
+
+			#suppAnnonce {
+				-moz-box-sizing: content-box;
+				-webkit-box-sizing: content-box;
+				-ms-box-sizing: content-box;
+				box-sizing: content-box;
+				position: relative;
+				width: 1160px;
+				height: 300px;
+				box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+				border-radius: 10px;
+				padding: 20px;
+				background: #fff url(images/banner.jpg) repeat 20px 20px;
+				background-size: 1160px 300px;
+			}
+
+
+				#suppAnnonce h2 {
+					position: absolute;
+					z-index: 1;
+					width: 100%;
+					top: 50px;
+					left: 0;
+					font-size: 3.3em;
+					color: #fff;
+					text-align: center;
+					letter-spacing: -2px;
+				}
+
+				#suppAnnonce span {
+					display: block;
+					position: absolute;
+					z-index: 1;
+					width: 100%;
+					bottom: 60px;
+					left: 0;
+					font-size: 1.6em;
+					color: #fff;
+					text-align: center;
+					letter-spacing: -1px;
+					opacity: 0.8;
+				}
+
+				#suppAnnonce table {
+					display: block;
+					position: absolute;
+					z-index: 1;
+					width: 100%;
+					margin-left: 28%;
+					bottom: 40px;
+					left: 0;
+					font-size: 1.2em;
+					color: #fff;
+					text-align: center;
+					opacity: 0.8;
+				}
+
+				#suppAnnonce td {
+					padding: 0px 5px 0px 5px;
+					text-align: right;
+					vertical-align: bottom;
+				}
+
+				#suppAnnonce a {
+					display: block;
+					position: absolute;
+					z-index: 1;
+					margin-left: 85%;
+					bottom: 40px;
+					left: 0;
+					font-size: 1.4em;
+					color: #fff;
+					text-align: center;
+					opacity: 0.8;
+				}
+
+			#ajoutAnnonce {
+				-moz-box-sizing: content-box;
+				-webkit-box-sizing: content-box;
+				-ms-box-sizing: content-box;
+				box-sizing: content-box;
+				position: relative;
+				width: 1160px;
+				height: 350px;
+				box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+				border-radius: 10px;
+				padding: 20px;
+				background: #fff url(images/banner.jpg) repeat 20px 20px;
+				background-size: 1160px 350px;
+			}
+
+
+				#ajoutAnnonce h2 {
+					position: absolute;
+					z-index: 1;
+					width: 100%;
+					top: 50px;
+					left: 0;
+					font-size: 3.3em;
+					color: #fff;
+					text-align: center;
+					letter-spacing: -2px;
+				}
+
+				#ajoutAnnonce span {
+					display: block;
+					position: absolute;
+					z-index: 1;
+					width: 100%;
+					bottom: 60px;
+					left: 0;
+					font-size: 1.6em;
+					color: #fff;
+					text-align: center;
+					letter-spacing: -1px;
+					opacity: 0.8;
+				}
+
+				#ajoutAnnonce table {
+					display: block;
+					position: absolute;
+					z-index: 1;
+					width: 100%;
+					margin-left: 35%;
+					bottom: 40px;
+					left: 0;
+					font-size: 1.2em;
+					color: #fff;
+					text-align: center;
+					opacity: 0.8;
+				}
+
+				#ajoutAnnonce td {
+					padding: 0px 5px 0px 5px;
+					text-align: right;
+					vertical-align: bottom;
+				}
+
+				#ajoutAnnonce a {
+					display: block;
+					position: absolute;
+					z-index: 1;
+					margin-left: 85%;
+					bottom: 40px;
+					left: 0;
+					font-size: 1.4em;
+					color: #fff;
+					text-align: center;
+					opacity: 0.8;
+				}
 
 	#ajoutAlbum {
 		-moz-box-sizing: content-box;
@@ -147,7 +374,7 @@
 			position: absolute;
 			z-index: 1;
 			width: 100%;
-			margin-left: 39%;
+			margin-left: 35%;
 			bottom: 40px;
 			left: 0;
 			font-size: 1.2em;
@@ -175,81 +402,230 @@
 			opacity: 0.8;
 		}
 
-
-	#ajoutAnnonce {
-		-moz-box-sizing: content-box;
-		-webkit-box-sizing: content-box;
-		-ms-box-sizing: content-box;
-		box-sizing: content-box;
-		position: relative;
-		width: 1160px;
-		height: 265px;
-		box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-		border-radius: 10px;
-		padding: 20px;
-		background: #fff url(images/banner.jpg) repeat 20px 20px;
-		background-size: 1160px 265px;
-	}
-
-
-		#ajoutAnnonce h2 {
-			position: absolute;
-			z-index: 1;
-			width: 100%;
-			top: 50px;
-			left: 0;
-			font-size: 3.3em;
-			color: #fff;
-			text-align: center;
-			letter-spacing: -2px;
+		#ajoutPhoto {
+			-moz-box-sizing: content-box;
+			-webkit-box-sizing: content-box;
+			-ms-box-sizing: content-box;
+			box-sizing: content-box;
+			position: relative;
+			width: 1160px;
+			height: 265px;
+			box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+			border-radius: 10px;
+			padding: 20px;
+			background: #fff url(images/banner.jpg) repeat 20px 20px;
+			background-size: 1160px 265px;
 		}
 
-		#ajoutAnnonce span {
-			display: block;
-			position: absolute;
-			z-index: 1;
-			width: 100%;
-			bottom: 60px;
-			left: 0;
-			font-size: 1.6em;
-			color: #fff;
-			text-align: center;
-			letter-spacing: -1px;
-			opacity: 0.8;
-		}
 
-		#ajoutAnnonce table {
-			display: block;
-			position: absolute;
-			z-index: 1;
-			width: 100%;
-			margin-left: 39%;
-			bottom: 40px;
-			left: 0;
-			font-size: 1.2em;
-			color: #fff;
-			text-align: center;
-			opacity: 0.8;
-		}
+			#ajoutPhoto h2 {
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				top: 50px;
+				left: 0;
+				font-size: 3.3em;
+				color: #fff;
+				text-align: center;
+				letter-spacing: -2px;
+			}
 
-		#ajoutAnnonce td {
-			padding: 0px 5px 0px 5px;
-			text-align: right;
-			vertical-align: bottom;
-		}
+			#ajoutPhoto span {
+				display: block;
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				bottom: 60px;
+				left: 0;
+				font-size: 1.6em;
+				color: #fff;
+				text-align: center;
+				letter-spacing: -1px;
+				opacity: 0.8;
+			}
 
-		#ajoutAnnonce a {
-			display: block;
-			position: absolute;
-			z-index: 1;
-			margin-left: 85%;
-			bottom: 40px;
-			left: 0;
-			font-size: 1.4em;
-			color: #fff;
-			text-align: center;
-			opacity: 0.8;
-		}
+			#ajoutPhoto table {
+				display: block;
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				margin-left: 25%;
+				bottom: 40px;
+				left: 0;
+				font-size: 1.2em;
+				color: #fff;
+				text-align: center;
+				opacity: 0.8;
+			}
+
+			#ajoutPhoto td {
+				padding: 0px 5px 0px 5px;
+				text-align: right;
+				vertical-align: bottom;
+			}
+
+			#ajoutPhoto a {
+				display: block;
+				position: absolute;
+				z-index: 1;
+				margin-left: 85%;
+				bottom: 40px;
+				left: 0;
+				font-size: 1.4em;
+				color: #fff;
+				text-align: center;
+				opacity: 0.8;
+			}
+
+			#modifBackground {
+				-moz-box-sizing: content-box;
+				-webkit-box-sizing: content-box;
+				-ms-box-sizing: content-box;
+				box-sizing: content-box;
+				position: relative;
+				width: 1160px;
+				height: 265px;
+				box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+				border-radius: 10px;
+				padding: 20px;
+				background: #fff url(images/banner.jpg) repeat 20px 20px;
+				background-size: 1160px 265px;
+			}
+
+
+				#modifBackground h2 {
+					position: absolute;
+					z-index: 1;
+					width: 100%;
+					top: 50px;
+					left: 0;
+					font-size: 3.3em;
+					color: #fff;
+					text-align: center;
+					letter-spacing: -2px;
+				}
+
+				#modifBackground span {
+					display: block;
+					position: absolute;
+					z-index: 1;
+					width: 100%;
+					bottom: 60px;
+					left: 0;
+					font-size: 1.6em;
+					color: #fff;
+					text-align: center;
+					letter-spacing: -1px;
+					opacity: 0.8;
+				}
+
+				#modifBackground table {
+					display: block;
+					position: absolute;
+					z-index: 1;
+					width: 100%;
+					margin-left: 39%;
+					bottom: 40px;
+					left: 0;
+					font-size: 1.2em;
+					color: #fff;
+					text-align: center;
+					opacity: 0.8;
+				}
+
+				#modifBackground td {
+					padding: 0px 5px 0px 5px;
+					text-align: right;
+					vertical-align: bottom;
+				}
+
+				#modifBackground a {
+					display: block;
+					position: absolute;
+					z-index: 1;
+					margin-left: 85%;
+					bottom: 40px;
+					left: 0;
+					font-size: 1.4em;
+					color: #fff;
+					text-align: center;
+					opacity: 0.8;
+				}
+
+				#modifProfil {
+					-moz-box-sizing: content-box;
+					-webkit-box-sizing: content-box;
+					-ms-box-sizing: content-box;
+					box-sizing: content-box;
+					position: relative;
+					width: 1160px;
+					height: 550px;
+					box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+					border-radius: 10px;
+					padding: 20px;
+					background: #fff url(images/banner.jpg) repeat 20px 20px;
+					background-size: 1160px 550px;
+				}
+
+
+					#modifProfil h2 {
+						position: absolute;
+						z-index: 1;
+						width: 100%;
+						top: 50px;
+						left: 0;
+						font-size: 3.3em;
+						color: #fff;
+						text-align: center;
+						letter-spacing: -2px;
+					}
+
+					#modifProfil span {
+						display: block;
+						position: absolute;
+						z-index: 1;
+						width: 100%;
+						bottom: 60px;
+						left: 0;
+						font-size: 1.6em;
+						color: #fff;
+						text-align: center;
+						letter-spacing: -1px;
+						opacity: 0.8;
+					}
+
+					#modifProfil table {
+						display: block;
+						position: absolute;
+						z-index: 1;
+						width: 100%;
+						margin-left: 30%;
+						bottom: 40px;
+						left: 0;
+						font-size: 1.2em;
+						color: #fff;
+						text-align: center;
+						opacity: 0.8;
+					}
+
+					#modifProfil td {
+						padding: 0px 5px 0px 5px;
+						text-align: right;
+						vertical-align: bottom;
+					}
+
+					#modifProfil a {
+						display: block;
+						position: absolute;
+						z-index: 1;
+						margin-left: 85%;
+						bottom: 40px;
+						left: 0;
+						font-size: 1.4em;
+						color: #fff;
+						text-align: center;
+						opacity: 0.8;
+					}
 
 
 	#inscription {
@@ -1500,7 +1876,7 @@
 			#main .Autre
 			{
 			margin: auto;
-			max-width : 790px;
+			width : 790px;
 			padding-left : 20px;
 			border : solid;
 			border-color : black;

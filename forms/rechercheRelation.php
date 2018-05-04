@@ -8,7 +8,7 @@ include '../includes/login.php';
 <html>
 <!-- section principale avec titre -->
 <head>
-    <title>Social Media Professionel</title>
+    <title>Social Media Professionnel</title>
     <meta charset = "utf-8" />
     <link rel="stylesheet" href="../assets/css/main.css" />
 </head>

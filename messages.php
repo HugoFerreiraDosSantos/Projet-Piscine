@@ -1,6 +1,30 @@
 <?php
 	include 'includes/login.php';
 	include 'includes/userInfo.php';
+	try{			
+				
+        			$date = date("Y-m-d H:i:s");
+				$conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
+	        		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				$sql="SELECT id_user1 FROM messagerie,user U WHERE U.last_visit_messagerie < date AND id_user2 = ".$_SESSION['id_user']." AND U.id_user = ".$_SESSION['id_user'];
+				$resultats = $conn->query($sql);
+				$arrayId[]='';
+	         		while($resultat = $resultats->fetch(PDO::FETCH_OBJ))
+				{
+				$arrayId[]=$resultat->id_user1;	
+				echo $resultat->id_user1;
+				}
+				$conn = null;
+
+				$conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
+	        		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				$sql="UPDATE user SET last_visit_messagerie = '".$date."' , new_message = 0 WHERE id_user = ".$_SESSION['id_user'];
+				$stmt = $conn->prepare($sql);
+			        $stmt->execute();
+				$conn = null;
+			}catch (PDOException $ex){ echo $ex->getMessage();}
+			
+
 ?>
 
 <!DOCTYPE HTML>
@@ -11,7 +35,7 @@
 -->
 <html>
 	<head>
-		<title>Minimaxing by HTML5 UP</title>
+		<title>Social Media Professionnel</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
@@ -31,7 +55,7 @@
 									<a href="mynetwork.php">Réseau</a>
 									<a href="myprofile.php">Profil&nbsp;</a>
 									<a href="notifications.php">Notifs&nbsp;</a>
-									<a href="messages.php"  class="current-page-item">Messages</a>
+									<a href="messages.php"  class="current-page-item" >Messages</a>
 									<a href="jobs.php">Emplois</a>
 								    <a href="album.php">Album&nbsp;</a>
 									<?php if($_SESSION['admin']=="Admin"){
@@ -51,19 +75,36 @@
 			</div>
 			<div id="main" >
 				<?php 
-				$sql = "SELECT path ,id_user2,U.nom,prenom FROM (SELECT id_user1,id_user2 FROM messagerie WHERE id_user1 = ".$_SESSION['id_user'];
-				$sql = $sql." UNION SELECT id_user2,id_user1 FROM messagerie WHERE id_user2 = ".$_SESSION['id_user'].") AS Mix , ";
-				$sql = $sql." user U , media M WHERE U.id_user = id_user2 AND U.photo_profile = M.id_media";
+
+				echo '<div class="container" style ="width: 300px;">';
+			
+				echo '<h2><a href="mynetworkMessage.php" class="button" style = "  text-align: center;">Nouvelle conversation</a></h2>';
+				echo '</div></br></br>';
+
+
+				$sql = "SELECT Me.date, path ,Mix.id_user2,Mix.id_user1,U.nom,prenom FROM (SELECT id_user1,id_user2 FROM messagerie WHERE id_user1 = ".$_SESSION['id_user'];
+				$sql = $sql."  UNION SELECT id_user2,id_user1 FROM messagerie WHERE id_user2 = ".$_SESSION['id_user'].") AS Mix , messagerie Me , ";
+				$sql = $sql." user U , media M WHERE U.id_user = Mix.id_user2 AND U.photo_profile = M.id_media AND ((Me.id_user2 = Mix.id_user1 OR Me.id_user2 = Mix.id_user2)AND(Me.id_user1 = Mix.id_user1 OR Me.id_user1 = Mix.id_user2)) ORDER BY date DESC " ;
+				$tab[]='';
 				try{
 					$conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
 	        			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 					$resultats = $conn->query($sql);
 	         			while($resultat = $resultats->fetch(PDO::FETCH_OBJ))
-					{echo '<div class="container" style ="width: 500px;">';
+					{
+					if( !in_array($resultat->id_user2, $tab))
+					{
+					$tab[] = $resultat->id_user2;
+					echo '<div class="container" style ="width: 500px;">';
+					
 					echo '<section>';
 					echo '</br><h2><img src ="assets/css/images/'.$resultat->path.'" alt = "pp" style = "width: 60px; height: 60px; border-radius: 30px; border: black solid;" /> '.$resultat->prenom.' '.$resultat->nom.'</h2>';
-				echo '<h2><a href="readMessages.php?id='.$resultat->id_user2.'&img2='.$resultat->path.'" class="button" style = "text-align: center;">Messages</a></h2></section></div></br></br>';
+				echo '<h2><a href="forms/readMessages.php?id='.$resultat->id_user2.'&img2='.$resultat->path.'" class="button" style = "text-align: center; ';
+				if(($resultat->id_user1 == $_SESSION['id_user'] && in_array($resultat->id_user2, $arrayId))||($resultat->id_user2 == $_SESSION['id_user'] && in_array($resultat->id_user1, $arrayId)))
+				{echo ' color: orange;';}
+				echo ' ">Messages</a></h2></section></div></br></br>';
 				}
+			}
 			}catch (PDOException $ex){ echo $ex->getMessage();}
 				?>
 

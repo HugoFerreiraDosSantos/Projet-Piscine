@@ -3,7 +3,7 @@
 ?>
 
 <?php
- SESSION_START();
+
  if(!isset($_POST['nom']))
  {
 	 header('Location: '.$_SERVER['HTTP_REFERER']);

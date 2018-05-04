@@ -7,7 +7,7 @@
 	<html>
 	  <head> 
 		<META charset="utf-8" /> 
-		<title>Carrousel</title> 
+		<title>Social Media Professionnel</title> 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src = "assets/js/carrousel.js"></script>	
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -77,7 +77,7 @@
 		
 			<h2 id = "Thumbs" style = "text-align: center;">
 		<ul>
-		<?php $sql = "SELECT path,nom FROM media M , album_media A WHERE A.id_album = ".$_GET['id']." AND A.id_media = M.id_media ;";
+		<?php $sql = "SELECT A.id_media,path,nom FROM media M , album_media A WHERE A.id_album = ".$_GET['id']." AND A.id_media = M.id_media ;";
 						try{
 						$conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
 						$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -86,7 +86,7 @@
 						
 							while($resultat = $resultats->fetch(PDO::FETCH_OBJ))
 						{
-						echo '<li><a href = "forms/nomPhoto.php?name='.$resultat->nom.'&album='.$_GET['id'].'" ><img src="assets/css/images/'.$resultat->path.'" width="100" height="50" class="img'.$i.'" TITLE ="'.$resultat->nom.'"/></li></a>';
+						echo '<li><a href = "forms/nomPhoto.php?name='.$resultat->nom.'&album='.$_GET['id'].'&id='.$resultat->id_media.'" ><img src="assets/css/images/'.$resultat->path.'" width="100" height="50" class="img'.$i.'" TITLE ="'.$resultat->nom.'"/></li></a>';
 						$i++;
 						}
 						} catch(PDOException $ex) {  }

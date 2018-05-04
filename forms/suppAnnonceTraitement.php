@@ -1,4 +1,8 @@
 <?php
+	include '../includes/login.php';
+?>
+
+<?php
 
  if(!isset($_POST['nom']))
  {
@@ -12,8 +16,6 @@
 		  $conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-          $sql = "SELECT COUNT(id_emploi) As count FROM `emploi` WHERE titre = '".$_POST['nom']."';";
-		  $resultats = $conn->query($sql);
 			  $sql = "DELETE FROM `emploi` WHERE titre = '".$_POST['nom']."';";
 			  $stmt = $conn->prepare($sql);
           $stmt->execute();

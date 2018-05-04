@@ -3,8 +3,8 @@
 ?>
 
 <?php
- SESSION_START();
- if(!isset($_POST['nom']))
+
+ if(!isset($_POST['nom']) || !isset($_POST['id']))
  {
 	 header('Location: '.$_SERVER['HTTP_REFERER']);
 	 exit;

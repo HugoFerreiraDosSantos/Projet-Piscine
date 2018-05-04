@@ -6,7 +6,7 @@ if(!isset($_POST['pseudo']) || !isset($_POST['email']) || !isset($_POST['nom']) 
 <html>
 <!-- section principale avec titre -->
 <head>
-    <title>Social Media Professionel</title>
+    <title>Social Media Professionnel</title>
     <meta charset = "utf-8" />
     <link rel="stylesheet" href="../assets/css/main.css" />
 </head>
@@ -66,9 +66,9 @@ if(!isset($_POST['pseudo']) || !isset($_POST['email']) || !isset($_POST['nom']) 
                     $count3 = $conn->exec($sql3);
 
                     if ($count3 != 0) {
-                        header("location: index.php");
+                        header("location: ../index.php");
                     } else {
-                        header("location: inscription.php");
+                        header("location: sign-up.php");
                     }
                 }
             }

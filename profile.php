@@ -1,6 +1,7 @@
 <?php
 	include 'includes/login.php';
 	include 'includes/userInfo2.php';
+	include 'includes/messageNonLu.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -11,7 +12,7 @@
 -->
 <html>
 	<head>
-		<title>Minimaxing by HTML5 UP</title>
+		<title>Social Media Professionnel</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
@@ -76,7 +77,7 @@
 									<a href="mynetwork.php" class="current-page-item">Réseau</a>
 									<a href="myprofile.php">Profil&nbsp;</a>
 									<a href="notifications.php">Notifs&nbsp;</a>
-									<a href="messages.php">Messages</a>
+									<?php include 'includes/checkMessages.php'; ?>
 									<a href="jobs.php">Emplois</a>
 								    <a href="album.php">Album&nbsp;</a>
 									<?php if($_SESSION['admin']=="Admin"){
@@ -158,7 +159,7 @@
 								$resultats = $conn->query($sql);
 				                $resultat = $resultats->fetch(PDO::FETCH_OBJ);
 
-								if(!$resultat){
+								if(!$resultat && $info2[10]!=$_SESSION['id_user']){
 									echo '<a style="margin-left:20px;" href="forms/addRelation.php?id_friend='.$info2[10].'" class="button">Ajouter une relation</a>';
 								}
 

@@ -3,8 +3,7 @@
 ?>
 
 <?php
- SESSION_START();
- if(!isset($_POST['titre']))
+ if(!isset($_POST['titre']) || !isset($_POST['objet']) || !isset($_POST['contact']))
  {
 	 header('Location: '.$_SERVER['HTTP_REFERER']);
 	 exit;
