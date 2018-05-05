@@ -1,6 +1,19 @@
 <?php
 	include 'includes/login.php';
 	include 'includes/messageNonLu.php';
+
+
+	try{
+
+        			$date = date("Y-m-d H:i:s");
+				$conn = new PDO("mysql:host=localhost;dbname=piscine", "root", "Prolias.123");
+	        		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				$sql="UPDATE user SET last_visit_notif = '".$date."' , new_notif = 0 WHERE id_user = ".$_SESSION['id_user'];
+				$stmt = $conn->prepare($sql);
+			        $stmt->execute();
+				$conn = null;
+			}catch (PDOException $ex){ echo $ex->getMessage();}
+
 ?>
 
 <!DOCTYPE HTML>

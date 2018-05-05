@@ -2,6 +2,8 @@
 
 include 'includes/login.php';
 include 'includes/messageNonLu.php';
+include 'includes/notifNonLu.php';
+
 
 if($_SESSION['admin']=='User'){
     header('Location: index.php');
@@ -33,7 +35,7 @@ if($_SESSION['admin']=='User'){
                                 <a href="index.php">Accueil</a>
                                 <a href="mynetwork.php">Réseau</a>
                                 <a href="myprofile.php">Profil&nbsp;</a>
-                                <a href="notifications.php">Notifs&nbsp;</a>
+                                 <?php include 'includes/checkNotif.php'; ?>
                                 <?php include 'includes/checkMessages.php'; ?>
                                 <a href="jobs.php">Emplois</a>
                                 <a href="album.php">Album&nbsp;</a>

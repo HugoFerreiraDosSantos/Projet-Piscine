@@ -2,6 +2,8 @@
 	include 'includes/login.php';
 	include 'includes/userInfo2.php';
 	include 'includes/messageNonLu.php';
+	include 'includes/notifNonLu.php';
+
 ?>
 
 <!DOCTYPE HTML>
@@ -77,7 +79,7 @@
 									<a href="index.php">Accueil</a>
 									<a href="mynetwork.php" class="current-page-item">Réseau</a>
 									<a href="myprofile.php">Profil&nbsp;</a>
-									<a href="notifications.php">Notifs&nbsp;</a>
+									<?php include 'includes/checkNotif.php'; ?>
 									<?php include 'includes/checkMessages.php'; ?>
 									<a href="jobs.php">Emplois</a>
 								    <a href="album.php">Album&nbsp;</a>

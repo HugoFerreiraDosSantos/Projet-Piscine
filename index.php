@@ -2,6 +2,7 @@
 <?php
 	include 'includes/login.php';
 	include 'includes/messageNonLu.php';
+	include 'includes/notifNonLu.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -32,8 +33,7 @@
 									<a href="index.php" class="current-page-item">Accueil</a>
 									<a href="mynetwork.php">Réseau</a>
 									<a href="myprofile.php">Profil&nbsp;</a>
-									<a href="notifications.php">Notifs&nbsp;</a>
-									<?php include 'includes/checkMessages.php'; ?>
+									<?php include 'includes/checkNotif.php'; ?>									<?php include 'includes/checkMessages.php'; ?>
 									<a href="jobs.php">Emplois</a>
 									<a href="album.php">Album&nbsp;</a>
 									<?php if($_SESSION['admin']=="Admin"){
@@ -158,7 +158,7 @@
 			{
 			echo '800px; ';
 			}
-			echo 'height: 90px; padding: 10px 10px 10px 10px; overflow: auto; word-wrap: break-word; " >'.$resultat->texte.'</div></div>';
+			echo 'height: 90px; padding: 10px 10px 10px 10px; overflow: auto; word-wrap: break-word; color:black;" >'.$resultat->texte.'</div></div>';
 			if (isset($arrayMedia[$resultat->id_publication]))
 			{
 		        echo '<section style="height: 257px; position: relative; border-bottom: none;text-align: center;">';
@@ -168,7 +168,7 @@
 			  echo '<div style="border-bottom: solid black; border-top: none;"><a href="aime.php?id='.$resultat->id_publication.'" class="button" style="width: 264px; text-align: center;" >Aimer : ';
 if(isset($arrayLike[$resultat->id_publication])) {echo $arrayLike[$resultat->id_publication];}
 else {echo '0';}
-echo '</a><a href="#" class="button" style="width: 265px; text-align: center;" >Commenter</a><a href="forms/partage.php?id='.$resultat->id_publication.'&user='.$resultat->id_user.'" class="button" style="width: 265px;text-align: center; " >Partager</a>';
+echo '</a><a href="forms/commentaire.php?publi='.$resultat->id_publication.'" class="button" style="width: 265px; text-align: center;" >Commenter</a><a href="forms/partage.php?id='.$resultat->id_publication.'&user='.$resultat->id_user.'" class="button" style="width: 265px;text-align: center; " >Partager</a>';
 		          echo '</div></section>';
 			}
 			else {
@@ -178,7 +178,7 @@ if(isset($arrayLike[$resultat->id_publication])) {echo $arrayLike[$resultat->id_
 else {echo '0';}
 
 
-echo '</a><a href="#" class="button" style="width: 265px; text-align: center;" >Commenter</a><a href="forms/partage.php?id='.$resultat->id_publication.'&user='.$resultat->id_user.'" class="button" style="width: 265px;text-align: center; " >Partager</a>';
+echo '</a><a href="forms/commentaire.php?publi='.$resultat->id_publication.'" class="button" style="width: 265px; text-align: center;" >Commenter</a><a href="forms/partage.php?id='.$resultat->id_publication.'&user='.$resultat->id_user.'" class="button" style="width: 265px;text-align: center; " >Partager</a>';
 		        echo '</div></section>';
 			}
 			}
@@ -190,7 +190,7 @@ if(isset($arrayLike[$resultat->id_publication])) {echo $arrayLike[$resultat->id_
 else {echo '0';}
 
 
-echo '</a><a href="#" class="button" style="width: 265px; text-align: center;" >Commenter</a><a href="forms/partage.php?id='.$resultat->id_publication.'&user='.$resultat->id_user.'" class="button" style="width: 265px;text-align: center; " >Partager</a></div>';
+echo '</a><a href="forms/commentaire.php?publi='.$resultat->id_publication.'" class="button" style="width: 265px; text-align: center;" >Commenter</a><a href="forms/partage.php?id='.$resultat->id_publication.'&user='.$resultat->id_user.'" class="button" style="width: 265px;text-align: center; " >Partager</a></div>';
 			}
 			echo '</div>';
 			}

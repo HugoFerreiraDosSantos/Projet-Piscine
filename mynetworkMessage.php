@@ -1,6 +1,7 @@
 <?php
 	include 'includes/login.php';
 	include 'includes/messageNonLu.php';
+	include 'includes/notifNonLu.php';
 ?>
 
 <!DOCTYPE HTML>

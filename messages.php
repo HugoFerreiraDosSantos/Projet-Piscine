@@ -1,6 +1,7 @@
 <?php
 	include 'includes/login.php';
 	include 'includes/userInfo.php';
+	include 'includes/notifNonLu.php';
 
 	try{
 
@@ -56,7 +57,7 @@
 									<a href="index.php">Accueil</a>
 									<a href="mynetwork.php">Réseau</a>
 									<a href="myprofile.php">Profil&nbsp;</a>
-									<a href="notifications.php">Notifs&nbsp;</a>
+									<?php include 'includes/checkNotif.php'; ?>
 									<a href="messages.php"  class="current-page-item" >Messages</a>
 									<a href="jobs.php">Emplois</a>
 								    <a href="album.php">Album&nbsp;</a>
